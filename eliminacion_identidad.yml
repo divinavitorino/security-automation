@@ -1,0 +1,12 @@
+---
+- name: Obter data e hora do último logon do Azure AD
+  hosts: localhost
+  tasks:
+    - name: Consultar usuario
+      azure.azcollection.azure_rm_aduser_info:
+       user_principal_name: fcruz@adminlabadventures.onmicrosoft.com
+      register: saida_out
+
+    - name: Mostrar saida
+      debug:
+       msg: "{{saida_out}}"
