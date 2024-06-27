@@ -1,12 +1,16 @@
 ---
-- name: Obter data e hora do último logon do Azure AD
+- name: Obter último logon de um usuário
   hosts: localhost
   tasks:
-    - name: Consultar usuario
-      azure.azcollection.azure_rm_aduser_info:
-       user_principal_name: fcruz@adminlabadventures.onmicrosoft.com
-      register: saida_out
+    - name: Executar script PowerShell
+      win_shell: |
+        $username = "fcruz@adminlabadventures.onmicrosoft.com"
+        $user = Get-ADUser -Identity $username -Properties LastLogonDate
+        $lastLogon = $user.LastLogonDate
+        Write-Output "Último logon de {{ username }}: {{ lastLogon }}"
+      register: last_logon_result
 
-    - name: Mostrar saida
+    - name: Exibir resultado
       debug:
-       msg: "{{saida_out}}"
+        var: last_logon_result.stdout_lines
+...
