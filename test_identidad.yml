@@ -1,5 +1,5 @@
 ---
--- name: Obter último logon de um usuário
+- name: Obter último logon de um usuário
    hosts: localhost
    tasks:
     - name: Obter informações do usuário
