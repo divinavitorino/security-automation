@@ -3,8 +3,8 @@
   hosts: localhost
   tasks:
     - name: Obter informações do usuário
-      azure_rm_azuread_user:
-        display_name: "nome-do-usuario"
+      azure_rm_aduser:
+        display_name: "fcruz@adminlabadventures.onmicrosoft.com"
       register: user_info
 
     - name: Exibir último logon
