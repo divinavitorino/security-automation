@@ -3,7 +3,8 @@
   hosts: localhost
   tasks:
     - name: Executar script PowerShell
-      win_shell: |
+      ansible.windows.win_powershell:
+      script: |
         $username = "fcruz@adminlabadventures.onmicrosoft.com"
         $user = Get-ADUser -Identity $username -Properties LastLogonDate
         $lastLogon = $user.LastLogonDate
