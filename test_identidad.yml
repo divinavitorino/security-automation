@@ -10,4 +10,3 @@
     - name: Exibir último logon
       debug:
         var: user_info.user.last_logon
-...
