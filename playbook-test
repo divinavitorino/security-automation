@@ -1,3 +1,4 @@
+---
 - name: Obter último logon de um usuário
   hosts: localhost
   tasks:
