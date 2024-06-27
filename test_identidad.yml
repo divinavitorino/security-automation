@@ -1,17 +1,13 @@
 ---
-- name: Obter último logon de um usuário
-  hosts: localhost
-  tasks:
-    - name: Executar script PowerShell
-      ansible.windows.win_powershell:
-      script: |
-        $username = "fcruz@adminlabadventures.onmicrosoft.com"
-        $user = Get-ADUser -Identity $username -Properties LastLogonDate
-        $lastLogon = $user.LastLogonDate
-        Write-Output "Último logon de {{ username }}: {{ lastLogon }}"
-      register: last_logon_result
+-- name: Obter último logon de um usuário
+   hosts: localhost
+   tasks:
+    - name: Obter informações do usuário
+      azure_rm_azuread_user:
+        display_name: "nome-do-usuario"
+      register: user_info
 
-    - name: Exibir resultado
+    - name: Exibir último logon
       debug:
-        var: last_logon_result.stdout_lines
+        var: user_info.user.last_logon
 ...
