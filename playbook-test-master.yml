@@ -1,17 +1,18 @@
 ---
-plugin: microsoft.ad.ldap
-
 - name: Prueba de accesso a AD
-  hosts: ad_server  # Reemplazar con el nombre de host definido en el archivo de inventario
+  hosts: ad_server
   tasks:
     - name: Hacer ping al servidor
       win_ping:
     - name: Listar usuarios activos
-    microsoft.ad.object_info:
+      microsoft.ad.object_info:
         filter: ObjectClass -eq 'user' -and objectCategory -eq 'Person'
         properties:
           - objectSid
-          - 
+          - Created
+          - lastLogon
+          - lastLogonTimestamp
+          - memberOf
       register: users
     - name: Ver lista
       debug:
