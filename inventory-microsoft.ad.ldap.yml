@@ -1,4 +1,9 @@
-ansible_host: ad-dns.labinternal.com
-ansible_user: ansible
-ansible_password: Serverserver@03
-microsoft_ad_distinguished_name: CN=AD-DNS,CN=Computers,DC=labinternal,DC=com
+all:
+  hosts:
+    ad_server:
+      ansible_host: 10.0.0.5  # Endereço IP do servidor Active Directory
+      ansible_user: ansible  # Nome de usuário com permissões para acessar o servidor
+      ansible_password: Serverserver@03  # Senha do usuário
+      ansible_connection: winrm  # Método de conexão (WinRM para Windows)
+      ansible_winrm_transport: ntlm  # Protocolo de autenticação (NTLM ou kerberos)
+      ansible_winrm_server_cert_validation: ignore  # Ignorar validação de certificado (não recomendado em produção)
