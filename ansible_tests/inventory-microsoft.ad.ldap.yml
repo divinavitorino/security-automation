@@ -1,7 +1,10 @@
+plugin: microsoft.ad.ldap
+
 # Acceder a Active Directory en el puerto 389
 server: ad-dns.labinternal.com
 port: 389
 
 #datos de acceso
-username: ansible
+username: ansible@labinternal.com
 password: Serverserver@03
+auth_protocol: kerberos
