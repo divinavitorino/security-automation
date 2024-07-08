@@ -1,10 +1,10 @@
 all:
   hosts:
     ad_server:
-      ansible_host: 10.0.0.5  # Endereço IP do servidor Active Directory
-      ansible_user: ansible  # Nome de usuário com permissões para acessar o servidor
-      ansible_password: Serverserver@03  # Senha do usuário
-      ansible_connection: winrm  # Método de conexão (WinRM para Windows)
+      ansible_host: 10.0.0.5  
+      ansible_user: ansible  
+      ansible_password: Serverserver@03  
+      ansible_connection: winrm  
       ansible_port: 5985
-      ansible_winrm_transport: kerberos  # Protocolo de autenticação (NTLM ou kerberos)
-      ansible_winrm_server_cert_validation: ignore  # Ignorar validação de certificado (não recomendado em produção)
+      ansible_winrm_transport: kerberos  
+      ansible_winrm_server_cert_validation: ignore

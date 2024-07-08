@@ -1,6 +1,6 @@
 ---
-- name: Test Active Directory Connection
-  hosts: ad_server  # Substitua pelo nome do host definido no seu inventário
+- name: Prueba de accesso a AD
+  hosts: ad_server  # Reemplazar con el nombre de host definido en el inventario
   tasks:
-    - name: Ping the server
+    - name: Hacer ping al servidor
       win_ping:
