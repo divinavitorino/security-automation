@@ -5,6 +5,16 @@
 # tarefa -> uma operação aplicada a um host ou grupo de hosts
 # handler -> gatilho para tarefa específica (caso use mais de um handler, colocar em lista)
 ---
+plugin: microsoft.ad.user
+- name: Listar usuários ativos
+  hosts: ad_server
+  tasks:
+    - name: Listar usuários
+      community.windows.win_domain_user:
+        state: present
+      register: users
 
-
+    - name: Exibir usuários
+      debug:
+        var: users
 ...
