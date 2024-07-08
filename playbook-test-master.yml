@@ -1,6 +1,7 @@
 ---
 - name: Prueba de accesso a AD
-  hosts: ad_server  # Reemplazar con el nombre de host definido en el inventario
+  hosts: ad_server  # Reemplazar con el nombre de host definido en el archivo de inventario
   tasks:
     - name: Hacer ping al servidor
       win_ping:
+...
