@@ -8,7 +8,7 @@
 - name: Listar usuários ativos
   hosts: ad_server
   tasks:
-    - name: Coletar SID de todas as contas de usuario 
+    - name: Busca de usuario no AD 
       microsoft.ad.object_info:
         filter: ObjectClass -eq 'user' -and objectCategory -eq 'Person'
         properties:
@@ -17,4 +17,16 @@
     - name: Exibir lista
       debug:
         var: users
+    - name: Buscar usuário específico
+      microsoft.ad.object_info:
+        identity: CN=Carmen Molina,CN=Users,DC=labinternal,DC=com
+        properties:
+          - Created
+          - lastLogon
+          - lastLogonTimestamp
+          - memberOf
+      register: individual_search
+    - name: Resultado
+      debug:
+        var: individual_search
 ...

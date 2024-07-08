@@ -6,4 +6,14 @@ plugin: microsoft.ad.ldap
   tasks:
     - name: Hacer ping al servidor
       win_ping:
+    - name: Listar usuarios activos
+    microsoft.ad.object_info:
+        filter: ObjectClass -eq 'user' -and objectCategory -eq 'Person'
+        properties:
+          - objectSid
+          - 
+      register: users
+    - name: Ver lista
+      debug:
+        var: users
 ...
