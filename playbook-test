@@ -1,13 +1,6 @@
 ---
-- name: Obter último logon de um usuário
-  hosts: localhost
+- name: Test Active Directory Connection
+  hosts: ad_server  # Substitua pelo nome do host definido no seu inventário
   tasks:
-    - name: Obter informações do usuário
-      azure_rm_azuread_user:
-        display_name: "nome-do-usuario"
-      register: user_info
-
-    - name: Exibir último logon
-      debug:
-        var: user_info.user.last_logon
-#blablabla
+    - name: Ping the server
+      win_ping:
