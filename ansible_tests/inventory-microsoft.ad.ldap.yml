@@ -2,13 +2,6 @@
 server: ad-dns.labinternal.com
 port: 389
 
-#username and password
+#datos de acceso
 username: ansible
 password: Serverserver@03
-
-# Search for computer accounts in the OU
-search_base: OU=Computers,DC=labinternal,DC=com
-
-
-
-
