@@ -1,3 +1,4 @@
+#For the first access tests, it is suggested to use the HTTP connection. After the environment setup is completed and validated, implement the connection via HTTPS
 all:
   hosts:
     ad_server:
