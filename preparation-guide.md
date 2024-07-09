@@ -11,6 +11,10 @@ Putting together the information from the providers, a server with the configura
 - 100GB disk
 - 2 processing cores
 
+> [!NOTE]
+> This scenario can suit a small to medium-sized company.
+> But it is important to evaluate the processing and memory load to ensure that there are no bottlenecks in the execution of processes.
+
 Other important infrastructure requirements:
 - DNS entry, to allow access by name
 - Configuring Firewall Rules to allow connection between the Ansible server and Active Directory
