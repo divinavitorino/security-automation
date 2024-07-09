@@ -24,10 +24,16 @@ Starting from the scratch, you can prepare the server by installing the necessar
 
 ## Package installation
 
-- python ->
-- openjdk ->
-- ansible -> python3 -m pip install --user ansible
-- Ansible collection for Microsoft AD management -> ansible-galaxy collection install microsoft.ad
+- python 
+- openjdk 
+- ansible
+
+python3 -m pip install --user ansible
+
+- Ansible collection for Microsoft AD management
+
+ansible-galaxy collection install microsoft.ad
+
 - Kerberos library for Python ->  apt-get -y install python-dev libkrb5-dev krb5-user
 - Kerberos Client ->pip install krb5
 - Remote access using WINRM -> pip install pywinrm
@@ -38,12 +44,16 @@ Starting from the scratch, you can prepare the server by installing the necessar
 - /etc/krb5.conf -> configure the Active Directory Servers on the sessions:
 
 [realms]
+
     MY.DOMAIN.COM = {
+    
         kdc = domain-controller1.my.domain.com
+        
         kdc = domain-controller2.my.domain.com
     }
 
 [domain_realm]
+    
     .my.domain.com = MY.DOMAIN.COM
 
 
