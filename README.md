@@ -1,9 +1,9 @@
-# Automation
+# Identity Management Routines using Ansible Playbooks
 
 Automations can help optimize large-scale tasks that are done manually, allowing people to focus on more intellectual tasks, such as planning, project development and process improvements.
 
-The Automation of Identity Management Routines project was developed as part of my Master's Final Work (TFM) and aims to propose the creation of an automated structure to perform these tasks.
-Using a structure that relies on Ansible and Jenkins, the idea is to create an environment focused on integration with Active Directory and deliver some playbooks that automate the most common tasks for these teams.
+These playbooks were developed as part of my Master's Final Work (TFM) and aims to propose the creation of an automated structure to perform these tasks.
+Using a structure that relies on Ansible and Jenkins, the idea is to create an environment focused on integration with Active Directory and deliver codes that automate the most common tasks for these teams.
 
 # Documentation
 
