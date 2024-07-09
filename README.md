@@ -38,7 +38,7 @@ Other important infrastructure requirements:
 # Preparing the Server
 
 In this scenario, I deployed Ansible and Jenkins on the same server (that uses Ubuntu 22.04), using the Azure cloud. However, from this point on, the chosen architecture (on-premises or cloud) will make little difference.
-You can check the compatible OS versions [here][https://docs.ansible.com/ansible/latest/installation_guide/installation_distros.html].
+You can check the compatible OS versions https://docs.ansible.com/ansible/latest/installation_guide/installation_distros.html
 Starting from the scratch, you can prepare the server by installing the necessary packages for the environment you want to build.
 
 ## Package installation
