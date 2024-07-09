@@ -8,7 +8,7 @@ Using a structure that relies on Ansible and Jenkins, the idea is to create an e
 # Documentation
 
 The purpose of this documentation is to support the preparation of the environment. As it is an integration with a Windows environment, some additional customizations are necessary.
-Access the [documentation](https://github.com/divinavitorino/security-automation/blob/main/preparation-guide.md)
+Access the [Preparation Guide](https://github.com/divinavitorino/security-automation/blob/main/preparation-guide.md)
 
 
 # Platforms:
