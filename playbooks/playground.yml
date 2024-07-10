@@ -8,25 +8,30 @@
 - name: Listar usuários ativos
   hosts: ad_server
   tasks:
-    #- name: Busca de usuario no AD 
-       #microsoft.ad.object_info:
-        #filter: ObjectClass -eq 'user' -and objectCategory -eq 'Person'
-        #properties:
-         # - objectSid
-      #register: users
-
-    #- name: Exibir lista
-     # debug:
-      #  var: users
-    
-    - name: Buscar usuário específico
+    - name: Visualizar propriedades do usuario
       microsoft.ad.object_info:
-        identity: CN=Carmen Molina,CN=Users,DC=labinternal,DC=com
+        identity: CN=Rebeca Soares,CN=Users,DC=labinternal,DC=com
+        properties: '*'
+      register: globalsearch
+    - name: Mostrar resultados
+      debug:
+        msg: "{{ globalsearch }}"
+    - name: Busca de usuarios no AD 
+      microsoft.ad.object_info:
+        filter: ObjectClass -eq 'user' -and objectCategory -eq 'Person'
         properties:
+          - CN
+          - Created
+          - lastLogon
           - lastLogonTimestamp
-      register: individual_search
-    
+          - userPrincipalName
+      register: userlist
+
     - name: Resultado
       debug:
-        msg: "{{ individual_search.objects.0.lastLogonTimestamp | microsoft.ad.as_datetime (format='%Y-%m-%dT%H:%M:%S')}}"
+        msg: 
+          - "Name: {{ userlist.objects.0.CN }}"
+          - "Email: {{ userlist.objects.0.userPrincipalName }}"
+          - "Created: {{ userlist.objects.0.Created }}"
+          - "Last Logon: {{ userlist.objects.0.lastLogonTimestamp | microsoft.ad.as_datetime (format='%Y-%m-%dT%H:%M:%S') }}"
 ...
