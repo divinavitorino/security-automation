@@ -3,9 +3,9 @@
   hosts: ad_server
   gather_facts: false
   tasks:
-  - name: Busca de usuarios no AD 
+  - name: Usuários que nunca se autenticaram
     microsoft.ad.object_info:
-      filter: ObjectClass -eq 'user' -and objectCategory -eq 'Person'
+      ldap_filter: (&(&(objectCategory=person)(objectClass=user))(|(lastLogon=0)(!(lastLogon=*))))
       properties:
       - lastLogon
       - lastLogonTimestamp
@@ -13,5 +13,5 @@
   
   - name: Mostrar Resultado Busca AD
     debug:
-      msg: "{{ userlist }}"
+      msg: "{{ userlist}}"
 ...
