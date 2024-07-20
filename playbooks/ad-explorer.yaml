@@ -5,16 +5,13 @@
   tasks:
   - name: Busca de usuarios no AD 
     microsoft.ad.object_info:
-      identity: CN=Pedro Silva,CN=Users,DC=labadventures,DC=com
+      filter: ObjectClass -eq 'user' -and objectCategory -eq 'Person'
       properties:
-        - CN
-        - Created
-        - lastLogon
-        - lastLogonTimestamp
-        - userPrincipalName
+      - lastLogon
+      - lastLogonTimestamp
     register: userlist
   
-  -  name: Mostrar Resultado Busca AD
+  - name: Mostrar Resultado Busca AD
     debug:
-      msg: "{{ globalsearch }}"
+      msg: "{{ userlist }}"
 ...
