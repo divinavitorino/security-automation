@@ -4,17 +4,17 @@
   gather_facts: false
   tasks:
   - name: Busca de usuarios no AD 
-      microsoft.ad.object_info:
-        identity: CN=Fernando Cruz,CN=Users,DC=labinternal,DC=com
-        properties:
-          - CN
-          - Created
-          - lastLogon
-          - lastLogonTimestamp
-          - userPrincipalName
-      register: userlist
+    microsoft.ad.object_info:
+      identity: CN=Pedro Silva,CN=Users,DC=labadventures,DC=com
+      properties:
+        - CN
+        - Created
+        - lastLogon
+        - lastLogonTimestamp
+        - userPrincipalName
+    register: userlist
   
-   - name: Mostrar Resultado Busca AD
-     debug:
+  -  name: Mostrar Resultado Busca AD
+    debug:
       msg: "{{ globalsearch }}"
 ...
