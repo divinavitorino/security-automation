@@ -5,20 +5,26 @@
 # tarefa -> uma operação aplicada a um host ou grupo de hosts
 # handler -> gatilho para tarefa específica (caso use mais de um handler, colocar em lista)
 ---
-- name: Listar usuários ativos
+- name: Listar usuários
   hosts: ad_server
+  gather_facts: false
+  vars:
+   hoje: "{{ lookup('pipe', 'date +%d-%m-%Y') }}"
   tasks:
-    - name: Visualizar propriedades do usuario
-      microsoft.ad.object_info:
-        identity: CN=Rebeca Soares,CN=Users,DC=labinternal,DC=com
-        properties: '*'
-      register: globalsearch
-    - name: Mostrar resultados
-      debug:
-        msg: "{{ globalsearch }}"
+
+   # - name: Visualizar propriedades do usuario
+   #   microsoft.ad.object_info:
+   #     identity: CN=Fernando Cruz,CN=Users,DC=labinternal,DC=com
+   #     properties:
+   #   register: globalsearch
+
+   # - name: Mostrar resultados
+   #   debug:
+   #   msg: "{{ globalsearch }}"
+
     - name: Busca de usuarios no AD 
       microsoft.ad.object_info:
-        filter: ObjectClass -eq 'user' -and objectCategory -eq 'Person'
+        identity: CN=Fernando Cruz,CN=Users,DC=labinternal,DC=com
         properties:
           - CN
           - Created
@@ -34,4 +40,12 @@
           - "Email: {{ userlist.objects.0.userPrincipalName }}"
           - "Created: {{ userlist.objects.0.Created }}"
           - "Last Logon: {{ userlist.objects.0.lastLogonTimestamp | microsoft.ad.as_datetime (format='%Y-%m-%dT%H:%M:%S') }}"
+    
+    - name: Calculo dias inativos
+      ansible.builtin.set_fact:
+       dias: "{{ (hoje | to_datetime('%d-%m-%Y')) - (userlist.objects.0.lastLogonTimestamp | microsoft.ad.as_datetime (format='%d-%m-%Y') | to_datetime('%d-%m-%Y')) }}" 
+
+    - name: Resultado em dias
+      debug:
+        msg: "{{ dias }}"
 ...
