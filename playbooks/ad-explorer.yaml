@@ -1,7 +1,7 @@
 ---
 #playbook para desabilitar contas que nunca se autenticaram no AD
 
-- name: Remover usuários que nunca autenticaram
+- name: Desabilitar usuários que nunca autenticaram
   hosts: ad_server
   gather_facts: false
   tasks:
