@@ -1,9 +1,11 @@
 ---
-- name: Listar usuários
+#playbook para desabilitar contas que nunca se autenticaram no AD
+
+- name: Remover usuários que nunca autenticaram
   hosts: ad_server
   gather_facts: false
   tasks:
-  - name: Usuários que nunca se autenticaram
+  - name: Busca AD
     microsoft.ad.object_info:
       ldap_filter: (&(&(objectCategory=person)(objectClass=user))(|(lastLogon=0)(!(lastLogon=*))))
       properties:
@@ -11,7 +13,12 @@
       - lastLogonTimestamp
     register: userlist
   
-  - name: Mostrar Resultado Busca AD
+  - name: Mostrar Resultado Busca Puro
     debug:
-      msg: "{{ userlist}}"
+      msg: "{{ userlist }}"  
+   
+  - name: Filtro e loop
+    debug:
+      msg: "{{ userlist.objects[0].lastLogon }}"
+    loop: "{{ userlist.objects }}"
 ...
