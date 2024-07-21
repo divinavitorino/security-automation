@@ -7,7 +7,7 @@
   tasks:
   - name: Busca AD
     microsoft.ad.object_info:
-      ldap_filter: (&(&(objectCategory=person)(objectClass=user))(|(lastLogon=0)(!(lastLogon=*))))
+      ldap_filter: (&(&(objectCategory=person)(objectClass=user))(!lastLogonTimestamp=*))
       properties:
       - lastLogon
       - lastLogonTimestamp
@@ -19,6 +19,6 @@
    
   - name: Filtro e loop
     debug:
-      msg: "{{ userlist.objects[0].lastLogon }}"
+      msg: "{{ userlist.objects[0].lastLogonTimestamp }}"
     loop: "{{ userlist.objects }}"
 ...
