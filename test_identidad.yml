@@ -1,6 +1,6 @@
 ---
  - name: Obter último logon de um usuário
-   hosts: localhost
+   hosts: ad_server
    tasks:
     - name: Obter informações do usuário
       azure_rm_aduser:
@@ -10,3 +10,4 @@
     - name: Exibir último logon
       debug:
        var: user_info.user.last_logon
+...
