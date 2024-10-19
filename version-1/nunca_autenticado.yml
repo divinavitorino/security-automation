@@ -1,0 +1,17 @@
+---
+- name: Listar usuários activos
+  hosts: ad_server
+  gather_facts: no
+  tasks:
+    - name: Búsqueda de usuarios en AD 
+      microsoft.ad.object_info:
+        ldap_filter: (&(memberOf=CN=Managed Service Accounts,DC=labinternal,DC=com))
+        properties:
+          - Created
+          - lastLogonTimestamp
+      register: users
+    - 
+    - name: Ver lista
+      debug:
+        var: users
+...

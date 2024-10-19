@@ -1,0 +1,24 @@
+# () -> 
+#[] ->
+#{} -> 
+# : -> declaração de valor chave
+# tarefa -> uma operação aplicada a um host ou grupo de hosts
+# handler -> gatilho para tarefa específica (caso use mais de um handler, colocar em lista)
+---
+- name: Listar usuários ativos
+  hosts: ad_server
+  tasks:
+    - name: Busca de usuario no AD 
+      microsoft.ad.object_info:
+        ldap_filter: "(&(objectCategory=person)(objectClass=user)(!(userAccountControl:1.2.840.113556.1.4.803:=2)))
+        properties:
+          - cn
+          - lastLogonTimestamp
+      register: active_users
+
+    - name: Exibir lista
+     debug:
+        msg: "{{ active_users.objects }}"
+    
+
+...
