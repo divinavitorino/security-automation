@@ -11,10 +11,23 @@
   tasks:
     - name: Busca de usuario en AD 
       microsoft.ad.object_info:
-        ldap_filter: "(&(objectCategory=person)(objectClass=user)(sAMAccountName=rsoares))"
+        ldap_filter: "(&(objectCategory=person)(objectClass=user)(sAMAccountName=jluiz))"
         properties: '*'
       register: active_users
+    
+    - name: Crear lista de usuarios para bloquear
+      set_fact:
+        user_block: "{{ active_users.objects | map(attribute='sAMAccountName') | list }}"
+
     - name: Ver la lista resultante
       debug:
-        msg: "{{ active_users }}" 
+        msg: "{{ user_block }}"
+
+    - name: Bloquear usuarios
+      microsoft.ad.user:
+        name: "{{ item }}"
+        enabled: no
+      loop: "{{ user_block }}"
+      loop_control:
+        label: "{{ item }}"
 ...

@@ -27,8 +27,8 @@
       microsoft.ad.user:
         name: "{{ item }}"
         enabled: no
-        description: "Cuenta bloqueada por automatización: nunca autenticada"
       loop: "{{ user_block }}"
       loop_control:
         label: "{{ item }}"
+...
 
