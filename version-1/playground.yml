@@ -5,20 +5,16 @@
 # tarefa -> uma operação aplicada a um host ou grupo de hosts
 # handler -> gatilho para tarefa específica (caso use mais de um handler, colocar em lista)
 ---
-- name: Listar usuários ativos
+- name: Listar usuários activos
   hosts: ad_server
+  gather_facts: no
   tasks:
-    - name: Busca de usuario no AD 
+    - name: Busca de usuario en AD 
       microsoft.ad.object_info:
-        ldap_filter: "(&(objectCategory=person)(objectClass=user)(!(userAccountControl:1.2.840.113556.1.4.803:=2)))
-        properties:
-          - cn
-          - lastLogonTimestamp
+        ldap_filter: "(&(objectCategory=person)(objectClass=user)(sAMAccountName=rsoares))"
+        properties: '*'
       register: active_users
-
-    - name: Exibir lista
-     debug:
-        msg: "{{ active_users.objects }}"
-    
-
+    - name: Ver la lista resultante
+      debug:
+        msg: "{{ active_users }}" 
 ...
