@@ -25,7 +25,7 @@
 
     - name: Bloquear usuarios
       microsoft.ad.user:
-        name: "{{ item }}"
+        identity: "{{ item }}"
         enabled: no
       loop: "{{ user_block }}"
       loop_control:

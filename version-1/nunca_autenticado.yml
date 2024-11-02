@@ -25,8 +25,9 @@
 
     - name: Bloquear usuarios
       microsoft.ad.user:
-        name: "{{ item }}"
+        identity: "{{ item }}"
         enabled: no
+        description: "Cuenta bloqueada por automatización - no utilizada"
       loop: "{{ user_block }}"
       loop_control:
         label: "{{ item }}"
