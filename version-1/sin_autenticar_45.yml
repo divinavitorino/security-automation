@@ -1,24 +1,18 @@
 ---
 - name: Listar usuários activos
   hosts: ad_server
-  gather_facts: no
+  gather_facts: yes
 
   tasks:
     - name: Lista de usuarios do AD
       microsoft.ad.object_info:
-        filter: "(objectClass=user)"
+        ldap_filter: "(&(objectCategory=person)(objectClass=user)(lastLogonTimestamp<=133711411460700614)))"
         properties:
           - sAMAccountName
           - lastLogonTimestamp
       register: ad_users
 
-    - name: Filtrar usuários inativos
-      set_fact:
-        inactive_users: >-
-          {{
-            ad_users.objects | selectattr('lastLogonTimestamp', 'lt', (ansible_date_time.epoch - 45 * 86400) * 10000000 + 116444736000000000) | map(attribute='sAMAccountName') | list
-          }} 
-
+    
     - name: Ver la lista resultante
       debug:
-        msg: "{{ inactive_users }}"
+        msg: "{{ ad_users }}"
