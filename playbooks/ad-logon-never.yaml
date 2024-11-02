@@ -1,0 +1,29 @@
+---
+#playbook para desabilitar contas que nunca se autenticaram no AD
+
+- name: Desabilitar usuários que nunca autenticaram
+  hosts: ad_server
+  gather_facts: false
+  tasks:
+    - name: Busca AD
+      microsoft.ad.object_info:
+        ldap_filter: (&(&(objectCategory=person)(objectClass=user))(!lastLogonTimestamp=*))
+        properties:
+        - lastLogon
+        - lastLogonTimestamp
+      register: userlist
+  
+    - name: Mostrar Resultado Busca Puro
+      debug:
+        msg: "{{ userlist }}"  
+   
+    - name: Filtro e loop
+      debug:
+        msg: "{{ userlist.objects[0].DistinguishedName }}"
+      loop: "{{ userlist.objects }}"
+  
+    - name: Desabilitar contas inativas
+      microsoft.ad.user:
+        identity: CN=Pedro Silva,CN=Users,DC=labinternal,DC=com
+        enabled: false  
+...

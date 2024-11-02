@@ -1,10 +1,22 @@
-# Hardening
+# Identity Management Routines using Ansible Playbooks
 
-## What is Hardening?
+Automations can help optimize large-scale tasks that are done manually, allowing people to focus on more intellectual tasks, such as planning, project development and process improvements.
 
-Hardening is a technique used in information security with the aim of eliminating vulnerable input methods in computer systems. By following the good practices recommended by the manufacturer, it is possible to make the environment safer against intrusion attempts. The objective of this script is to speed up the deployment process in distributed environments at the endpoint level.
+These playbooks were developed as part of my Master's Final Work (TFM) and aims to propose the creation of an automated structure to perform these tasks.
+Using a structure that relies on Ansible and Jenkins, the idea is to create an environment focused on integration with Active Directory and deliver codes that automate the most common tasks for these teams.
 
-Platforms:
+# Documentation
 
-![Windows 11](https://img.shields.io/badge/Windows%2011-%230079d5.svg?style=for-the-badge&logo=Windows%2011&logoColor=white)
-![PowerShell](https://img.shields.io/badge/PowerShell-%235391FE.svg?style=for-the-badge&logo=powershell&logoColor=white)
+The purpose of this documentation is to support the preparation of the environment. As it is an integration with a Windows environment, some additional customizations are necessary.
+
+Access the [Preparation Guide](https://github.com/divinavitorino/security-automation/blob/main/preparation-guide.md)
+
+# Playbooks 
+
+The Playbooks that I've used on my project are available [here](https://github.com/divinavitorino/security-automation/tree/dac0956f291d6d288caa4d0c809cfe06fd79568c/playbooks)
+# Platforms:
+![Ansible](https://img.shields.io/badge/ansible-%231A1918.svg?style=for-the-badge&logo=ansible&logoColor=white)
+![Jenkins](https://img.shields.io/badge/jenkins-%232C5263.svg?style=for-the-badge&logo=jenkins&logoColor=white)
+![YAML](https://img.shields.io/badge/yaml-%23ffffff.svg?style=for-the-badge&logo=yaml&logoColor=151515)
+![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)
+![Debian](https://img.shields.io/badge/Debian-D70A53?style=for-the-badge&logo=debian&logoColor=white)

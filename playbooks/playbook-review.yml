@@ -1,10 +1,11 @@
 ---
-- name: Prueba de accesso a AD
+#Este playbook hace ping al servidor para verificar si está disponible y luego muestra una lista completa de usuarios con la fecha de creación, el último inicio de sesión y los grupos asociados.
+- name: Prueba de accesso a AD #Primera tarea
   hosts: ad_server
   tasks:
     - name: Hacer ping al servidor
       win_ping:
-    - name: Listar usuarios activos
+    - name: Listar usuarios activos #Segunda tarea
       microsoft.ad.object_info:
         filter: ObjectClass -eq 'user' -and objectCategory -eq 'Person'
         properties:
@@ -14,7 +15,7 @@
           - lastLogonTimestamp
           - memberOf
       register: users
-    - name: Ver lista
+    - name: Ver lista #Tercera tarea
       debug:
         var: users
 ...
