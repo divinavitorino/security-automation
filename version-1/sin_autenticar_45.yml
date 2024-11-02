@@ -1,15 +1,14 @@
 ---
- - name: Listar usuários activos
-   hosts: ad_server
-   gather_facts: no
+- name: Listar usuários activos
+  hosts: ad_server
+  gather_facts: no
 
-    tasks:
-    - name: Obter lista de usuários inativos
-         ansible.builtin.shell: |
-            Import-Module ActiveDirectory
-            Get-ADUser -Filter * -Property LastLogonDate | Where-Object { $_.LastLogonDate -lt (Get-Date).AddDays(-45) } | Select-Object -ExpandProperty SamAccountName
-        register: inactive_users
-    
-    - name: Ver la lista resultante
+  tasks:
+    - name: Lista de usuarios inactivos
+      ansible.builtin.shell: | Import-Module ActiveDirectory
+        Get-ADUser -Filter * -Property LastLogonDate | Where-Object { $_.LastLogonDate -lt (Get-Date).AddDays(-45) } | Select-Object -ExpandProperty SamAccountName
+      register: inactive_users
+
+    - name: Listar resultado
       debug:
-        msg: "{{ inactive_users }}"
+        msg: "{{ inactive_users }}"  
