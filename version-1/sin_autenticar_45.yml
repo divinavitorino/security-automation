@@ -1,3 +1,5 @@
+#Este playbook busca usuarios que están activos en Active Directory pero llevan más de 45 días sin conectarse al dominio, 
+#deshabilita las cuentas y guarda la exportación de las cuentas deshabilitadas en un archivo txt.
 ---
 - name: Listar usuários activos
   hosts: ad_server
