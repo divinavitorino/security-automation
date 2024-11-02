@@ -5,7 +5,7 @@
 
   tasks:
     - name: Lista de usuarios do AD
-       microsoft.ad.object_info:
+      microsoft.ad.object_info:
         filter: "(objectClass=user)"
         properties:
           - sAMAccountName
