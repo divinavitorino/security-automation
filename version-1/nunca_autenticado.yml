@@ -6,7 +6,7 @@
   gather_facts: no
 
   tasks:
-    - name: Busca de usuario en AD 
+    - name: Búsqueda de usuario en AD 
       microsoft.ad.object_info:
         ldap_filter: "(&(objectCategory=person)(objectClass=user)(lastLogon=0)(!(userAccountControl:1.2.840.113556.1.4.803:=2)))"
         properties:
