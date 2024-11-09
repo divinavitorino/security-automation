@@ -8,11 +8,11 @@
    days_ago: 45
 
   tasks:
-    - name: Calcular timestamp para 45 dias
+    - name: Calcular timestamp para 45 días
       set_fact:
         timestamp: "{{ ((ansible_date_time.epoch | int - (days_ago * 86400)) * 10000000) + 116444736000000000 }}"   
 
-    - name: Lista de usuarios do AD
+    - name: Lista de usuarios del AD
       microsoft.ad.object_info:
         ldap_filter: "(&(objectCategory=person)(objectClass=user)(lastLogonTimestamp<={{ timestamp }})(!(userAccountControl:1.2.840.113556.1.4.803:=2)))"
         properties:

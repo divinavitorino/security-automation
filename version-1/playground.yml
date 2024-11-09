@@ -5,17 +5,18 @@
 # tarefa -> uma operação aplicada a um host ou grupo de hosts
 # handler -> gatilho para tarefa específica (caso use mais de um handler, colocar em lista)
 ---
-- name: Listar usuários activos
+- name: Gerenciar conta de usuário do Windows
   hosts: ad_server
-  gather_facts: yes 
-  vars:
-    days_ago: 45
-    
   tasks:
-    - name: Calcular timestamp para 45 dias atrás
-      set_fact:
-        timestamp: "{{ ((ansible_date_time.epoch | int - (days_ago * 86400)) * 10000000) + 116444736000000000 }}"
-    
-    - name: Ver la lista resultante
-      debug:
-        msg: "{{ timestamp }}"
+    - name: Bloquear conta de usuário
+      microsoft.ad.user:
+        identity: 
+        enabled: no
+        description: "Cuenta bloqueada por automatización - no utilizada"
+      when: ansible_date_time.date == "2024-11-10"
+
+    - name: Desbloquear conta de usuário
+      ansible.windows.win_user:
+        name: "usuario_exemplo"
+        state: "present"
+      when: ansible_date_time.date == "2024-11-20"
