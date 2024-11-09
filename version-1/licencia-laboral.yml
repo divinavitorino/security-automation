@@ -1,0 +1,29 @@
+---
+- name: Bloqueo de cuenta
+  hosts: ad_server
+  gather_facts: yes
+   vars_prompt:
+    - name: "user_id"
+      prompt: "Ingrese el nombre del usuario a bloquear"
+      private: no
+    - name: "fecha_inicio"
+      prompt: "Insira a data de início (YYYY-MM-DD)"
+      private: no
+    - name: "fecha_termino"
+      prompt: "Insira a data de término (YYYY-MM-DD)"
+      private: no
+  tasks:
+    - name: Bloquear cuenta
+      microsoft.ad.user:
+        identity: "{{ user_id }}"
+        enabled: no
+        description: "Licencia Laboral - Automación"
+      when: ansible_date_time.date >= fecha_inicio and ansible_date_time.date <= fecha_termino
+    
+    - name: Desbloquear cuenta
+      microsoft.ad.user:
+        identity: "{{ user_id }}"
+        enabled: yes
+        description: "En actividad normal"
+      when: ansible_date_time.date > fecha_termino
+...
