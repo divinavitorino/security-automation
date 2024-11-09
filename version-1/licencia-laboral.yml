@@ -1,5 +1,5 @@
 ---
-- name: Bloqueo de cuenta
+- name: Bloqueo de cuenta por licencia laboral
   hosts: ad_server
   gather_facts: yes
    vars_prompt:
@@ -7,10 +7,10 @@
       prompt: "Ingrese el nombre del usuario a bloquear"
       private: no
     - name: "fecha_inicio"
-      prompt: "Insira a data de início (YYYY-MM-DD)"
+      prompt: "Ingrese la fecha de inicio (YYYY-MM-DD)"
       private: no
     - name: "fecha_termino"
-      prompt: "Insira a data de término (YYYY-MM-DD)"
+      prompt: "Ingrese la fecha de término (YYYY-MM-DD)"
       private: no
   tasks:
     - name: Bloquear cuenta
