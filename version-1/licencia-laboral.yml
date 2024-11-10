@@ -5,15 +5,15 @@
   tasks:
     - name: Bloquear cuenta
       microsoft.ad.user:
-        identity: "{{ user_id }}"
+        identity: "{{ lookup('env', 'user_id') }}"
         enabled: no
         description: "Licencia Laboral - Automación"
-      when: ansible_date_time.date >= fecha_inicio and ansible_date_time.date <= fecha_termino
+      when: ansible_date_time.date >= lookup('env', 'fecha_inicio') and ansible_date_time.date <= lookup('env', 'fecha_termino')
     
     - name: Desbloquear cuenta
       microsoft.ad.user:
-        identity: "{{ user_id }}"
+        identity: "{{ lookup('env', 'user_id') }}"
         enabled: yes
         description: "En actividad normal"
-      when: ansible_date_time.date > fecha_termino
+      when: ansible_date_time.date > lookup('env', 'fecha_termino')
 ...
