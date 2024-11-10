@@ -2,16 +2,6 @@
 - name: Bloqueo de cuenta por licencia laboral
   hosts: ad_server
   gather_facts: yes
-  vars_prompt:
-    - name: user_id
-      prompt: "Ingrese el nombre del usuario a bloquear"
-      private: false
-    - name: fecha_inicio
-      prompt: "Ingrese la fecha de inicio (YYYY-MM-DD)"
-      private: false
-    - name: fecha_termino
-      prompt: "Ingrese la fecha de término (YYYY-MM-DD)"
-      private: false
   tasks:
     - name: Bloquear cuenta
       microsoft.ad.user:
