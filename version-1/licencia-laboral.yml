@@ -15,5 +15,5 @@
         identity: "{{ lookup('env', 'user_id') }}"
         enabled: yes
         description: "En actividad normal"
-      when: ansible_date_time.date > lookup('env', 'fecha_termino')
+      when: ansible_date_time.date >= lookup('env', 'fecha_termino')
 ...
