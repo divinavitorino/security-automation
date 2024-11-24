@@ -21,6 +21,7 @@ The Security Automation for SMBs project relies on open source tools to create a
 - Active Directory credential: read and write permissions for user's organizational units (OU)
 - Enable winrm Service on Active Directory
 - Configure TrustedHosts file to permit only the connection from Ansible and Jenkins Server
+
 [Powershell]
 Set-Item WSMan:localhost\client\trustedhosts -value Servername -Force
 
