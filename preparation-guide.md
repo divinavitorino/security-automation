@@ -20,7 +20,9 @@ The Security Automation for SMBs project relies on open source tools to create a
 > [!NOTE]
 > In this scenario, I deployed Ansible and Jenkins on the same server (that uses Ubuntu 22.04), using the Azure cloud. However, from this point on, the chosen architecture (on-premises or cloud) will make little difference.
 
-## Package installation
+# Package installation
+
+## Ansible
 
 - python 
 - openjdk 
@@ -36,7 +38,15 @@ ansible-galaxy collection install microsoft.ad
 - Kerberos Client ->pip install krb5
 - Remote access using WINRM -> pip install pywinrm
 
-## Configuration files
+## Jenkins
+
+sudo su - jenkins
+
+- Kerberos library for Python ->  apt-get -y install python-dev libkrb5-dev krb5-user
+- Kerberos Client ->pip install krb5
+- Remote access using WINRM -> pip install pywinrm
+
+# Linux Configuration files
 
 - /etc/hosts -> include the IP address and name of the Active Directory Servers
 - /etc/krb5.conf -> configure the Active Directory Servers on the sessions:
@@ -54,4 +64,11 @@ ansible-galaxy collection install microsoft.ad
     
     .my.domain.com = MY.DOMAIN.COM
 
+# Additional Configurations
 
+## Ansible
+- Ansible Vault
+
+## Jenkins
+- SMTP Server
+- Timezone
