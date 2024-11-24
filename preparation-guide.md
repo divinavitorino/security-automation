@@ -10,8 +10,19 @@ The Security Automation for SMBs project relies on open source tools to create a
 
 - Suggested configuration: 4 vCPU, 16 GB of RAM, 512 GB of storage
 - Suggested distributions: Ubuntu (16.04 and later), Debian (version 9 (Stretch) and later), Red Hat Enterprise Linux - RHEL (version 7 and later), SUSE Linux Enterprise Server - SLES (version 12 and later). 
-- Firewall rules: Ansible: 22 (SSH), 5985 (WinRM - HTTP), 5986-(WinRM - HTTPS) and Jenkins: 8080 (Web interface), 50000 (Agent-server communication).
+- Firewall rules (allow): 
+    - Ansible: 
+        - 22 (SSH), 
+        - 5985 (WinRM - HTTP), 
+        - 5986-(WinRM - HTTPS) 
+    - Jenkins: 
+        - 8080 (Web interface), 
+        - 50000 (Agent-server communication).
 - Active Directory credential: read and write permissions for user's organizational units (OU)
+- Enable winrm Service on Active Directory
+- Configure TrustedHosts file to permit only the connection from Ansible and Jenkins Server
+
+Set-Item WSMan:localhost\client\trustedhosts -value Servername -Force
 
 > [!NOTE]
 > This scenario can suit a small to medium-sized company.
