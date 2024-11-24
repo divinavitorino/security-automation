@@ -8,8 +8,20 @@ The Security Automation for SMBs project relies on open source tools to create a
 
 # Infrastructure Requirements
 
-- Suggested configuration: 4 vCPU, 16 GB of RAM, 512 GB of storage
-- Suggested distributions: Ubuntu (16.04 and later), Debian (version 9 (Stretch) and later), Red Hat Enterprise Linux - RHEL (version 7 and later), SUSE Linux Enterprise Server - SLES (version 12 and later). 
+- Suggested configuration: 
+    - 4 vCPU
+    - 16 GB of RAM 
+    - 512 GB of storage
+- Suggested distributions: 
+    - Ubuntu (16.04 and later), 
+    - Debian (version 9 (Stretch) and later), 
+    - Red Hat Enterprise Linux - RHEL (version 7 and later), 
+    - SUSE Linux Enterprise Server - SLES (version 12 and later). 
+
+> [!NOTE]
+> This scenario can suit a small to medium-sized company.
+> But it is important to evaluate the processing and memory load to ensure that there are no bottlenecks in the execution of processes.
+
 - Firewall rules (allow): 
     - Ansible: 
         - 22 (SSH), 
@@ -23,11 +35,8 @@ The Security Automation for SMBs project relies on open source tools to create a
 - Configure TrustedHosts file to permit only the connection from Ansible and Jenkins Server
 
 [Powershell]
-Set-Item WSMan:localhost\client\trustedhosts -value Servername -Force
+    Set-Item WSMan:localhost\client\trustedhosts -value Servername -Force
 
-> [!NOTE]
-> This scenario can suit a small to medium-sized company.
-> But it is important to evaluate the processing and memory load to ensure that there are no bottlenecks in the execution of processes.
 
 > [!NOTE]
 > In this scenario, I deployed Ansible and Jenkins on the same server (that uses Ubuntu 22.04), using the Azure cloud. However, from this point on, the chosen architecture (on-premises or cloud) will make little difference.
