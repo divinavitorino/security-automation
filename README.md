@@ -13,7 +13,7 @@ Access the [Preparation Guide](https://github.com/divinavitorino/security-automa
 
 # Playbooks 
 
-The Playbooks that I've used on my project are available [here](https://github.com/divinavitorino/security-automation/tree/dac0956f291d6d288caa4d0c809cfe06fd79568c/playbooks)
+The Playbooks that I've used on my project are available [here](https://github.com/divinavitorino/security-automation/tree/main/ansible-playbooks)
 
 # Platforms:
 ![Ansible](https://img.shields.io/badge/ansible-%231A1918.svg?style=for-the-badge&logo=ansible&logoColor=white)
