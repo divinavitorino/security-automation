@@ -1,8 +1,8 @@
-# Identity Management Routines using Ansible Playbooks
+# Identity Management Routines using Ansible Playbooks and Jenkins Pipelines
 
 Automations can help optimize large-scale tasks that are done manually, allowing people to focus on more intellectual tasks, such as planning, project development and process improvements.
 
-These playbooks were developed as part of my Master's Final Work (TFM) and aims to propose the creation of an automated structure to perform these tasks.
+These playbooks were developed as part of my Master's Final Project (TFM) in UCAM (Universidad Catolica de Murcia) and aims to propose the creation of an automated structure to perform these tasks.
 Using a structure that relies on Ansible and Jenkins, the idea is to create an environment focused on integration with Active Directory and deliver codes that automate the most common tasks for these teams.
 
 # Documentation
@@ -14,6 +14,7 @@ Access the [Preparation Guide](https://github.com/divinavitorino/security-automa
 # Playbooks 
 
 The Playbooks that I've used on my project are available [here](https://github.com/divinavitorino/security-automation/tree/dac0956f291d6d288caa4d0c809cfe06fd79568c/playbooks)
+
 # Platforms:
 ![Ansible](https://img.shields.io/badge/ansible-%231A1918.svg?style=for-the-badge&logo=ansible&logoColor=white)
 ![Jenkins](https://img.shields.io/badge/jenkins-%232C5263.svg?style=for-the-badge&logo=jenkins&logoColor=white)
