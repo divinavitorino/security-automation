@@ -1,0 +1,17 @@
+---
+- name: Gerenciar conta de usuário do Windows
+  hosts: ad_server
+  tasks:
+    - name: Creat Cuenta
+      microsoft.ad.user:
+        identity: 
+        firstname:
+        surname:
+        password:
+        state: present
+        domain_username:
+        domain_password:
+        path: 
+        groups:
+          set:
+            - Domain Users
