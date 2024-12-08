@@ -3,7 +3,7 @@ all:
     ad_server:
       ansible_host: 10.0.0.5  
       ansible_user: superuser  
-      ansible_password: Activedirectory2024  
+      ansible_password: Activedirectory2024
       ansible_connection: winrm  
       ansible_port: 5985
       ansible_winrm_transport: kerberos  
