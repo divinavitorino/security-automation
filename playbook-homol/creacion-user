@@ -2,16 +2,30 @@
 - name: Gerenciar conta de usuário do Windows
   hosts: ad_server
   tasks:
-    - name: Creat Cuenta
+    - name: Crear Cuenta
       microsoft.ad.user:
-        identity: 
-        firstname:
-        surname:
-        password:
+        identity: jsilva
+        firstname: Joao Pedro
+        surname: Silva 
         state: present
-        domain_username:
-        domain_password:
-        path: 
+        domain_username: jsilva
+        domain_password: Joaojoao01
+        path: ou=Brasil,ou=Campinas,dc=labinternal,dc=com
         groups:
           set:
             - Domain Users
+            - Industrial
+
+    - name: Crear Cuenta
+      microsoft.ad.user:
+       identity: rsouza 
+        firstname: Rogerio 
+        surname: Souza 
+        state: present
+        domain_username: rsouza 
+        domain_password: Rogeriorogerio01
+        path: ou=Brasil,ou=Campinas,dc=labinternal,dc=com
+        groups:
+          set:
+            - Domain Users
+            - Administrativo
