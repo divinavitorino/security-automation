@@ -1,3 +1,5 @@
+#In inventory file, please add the server(s) that will receive the operation. Don't forget to store the credentials 
+#on Ansible Vault to make sure that they are not hardcoded. This may expose your production environment!
 all:
   hosts:
     ad_server:
