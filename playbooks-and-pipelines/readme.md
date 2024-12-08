@@ -6,6 +6,10 @@ To use the playbook in Ansible, you need two files:
 
 Each file can have one or more tasks, depending on the need. It is important to think about tasks in blocks and gradually increase the degree of complexity
 
+# Pipelines
+
+To use pipelines, you will need to configure a new pipeline on Jenkins.
+
 > [!IMPORTANT]
 > Test playbooks in controlled environments before putting them into production
 
