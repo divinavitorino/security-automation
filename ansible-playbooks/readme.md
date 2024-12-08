@@ -8,3 +8,6 @@ Each file can have one or more tasks, depending on the need. It is important to 
 
 > [!IMPORTANT]
 > Test playbooks in controlled environments before putting them into production
+
+> [!IMPORTANT]
+> Use Ansible Vault to store your credentials

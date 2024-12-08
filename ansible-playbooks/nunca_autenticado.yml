@@ -1,0 +1,35 @@
+#Este playbook busca usuarios que están activos en Active Directory pero que nunca se han conectado al dominio, 
+#deshabilita las cuentas y guarda la exportación de las cuentas deshabilitadas en un archivo txt.
+---
+- name: Listar usuários activos
+  hosts: ad_server
+  gather_facts: no
+
+  tasks:
+    - name: Búsqueda de usuario en AD 
+      microsoft.ad.object_info:
+        ldap_filter: "(&(objectCategory=person)(objectClass=user)(lastLogon=0)(!(userAccountControl:1.2.840.113556.1.4.803:=2)))"
+        properties:
+          - CN
+          - sAMAccountName
+          - DistinguishedName
+      register: active_users
+
+    - name: Crear lista de usuarios para bloquear
+      set_fact:
+        user_block: "{{ active_users.objects | map(attribute='sAMAccountName') | list }}"
+
+    - name: Ver la lista resultante
+      debug:
+        msg: "{{ user_block }}"
+
+    - name: Bloquear usuarios
+      microsoft.ad.user:
+        identity: "{{ item }}"
+        enabled: no
+        description: "Cuenta bloqueada por automatización - no utilizada"
+      loop: "{{ user_block }}"
+      loop_control:
+        label: "{{ item }}"
+...
+

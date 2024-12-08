@@ -1,0 +1,41 @@
+#Este playbook busca usuarios que están activos en Active Directory pero llevan más de 45 días sin conectarse al dominio, 
+#deshabilita las cuentas y guarda la exportación de las cuentas deshabilitadas en un archivo txt.
+---
+- name: Listar usuários activos
+  hosts: ad_server
+  gather_facts: yes
+  vars:
+   days_ago: 45
+
+  tasks:
+    - name: Calcular timestamp para 45 días
+      set_fact:
+        timestamp: "{{ ((ansible_date_time.epoch | int - (days_ago * 86400)) * 10000000) + 116444736000000000 }}"   
+
+    - name: Lista de usuarios del AD
+      microsoft.ad.object_info:
+        ldap_filter: "(&(objectCategory=person)(objectClass=user)(lastLogonTimestamp<={{ timestamp }})(!(userAccountControl:1.2.840.113556.1.4.803:=2)))"
+        properties:
+          - sAMAccountName
+          - lastLogon
+          - lastLogonTimestamp
+      register: ad_users
+
+    
+    - name: Ver la lista resultante
+      debug:
+        msg: "{{ ad_users }}"
+    
+    - name: Crear lista de usuarios para bloquear
+      set_fact:
+        user_block: "{{ ad_users.objects | map(attribute='sAMAccountName') | list }}"
+
+    - name: Bloquear usuarios
+      microsoft.ad.user:
+        identity: "{{ item }}"
+        enabled: no
+        description: "Cuenta bloqueada por automatización - 45 dias sin utilización"
+      loop: "{{ user_block }}"
+      loop_control:
+        label: "{{ item }}"
+...

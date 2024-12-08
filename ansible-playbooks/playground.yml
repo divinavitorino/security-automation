@@ -1,0 +1,22 @@
+# () -> 
+#[] ->
+#{} -> 
+# : -> declaração de valor chave
+# tarefa -> uma operação aplicada a um host ou grupo de hosts
+# handler -> gatilho para tarefa específica (caso use mais de um handler, colocar em lista)
+---
+- name: Gerenciar conta de usuário do Windows
+  hosts: ad_server
+  tasks:
+    - name: Bloquear conta de usuário
+      microsoft.ad.user:
+        identity: 
+        enabled: no
+        description: "Cuenta bloqueada por automatización - no utilizada"
+      when: ansible_date_time.date == "2024-11-10"
+
+    - name: Desbloquear conta de usuário
+      ansible.windows.win_user:
+        name: "usuario_exemplo"
+        state: "present"
+      when: ansible_date_time.date == "2024-11-20"
