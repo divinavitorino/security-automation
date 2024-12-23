@@ -8,9 +8,11 @@
 - name: Gerenciar conta de usuário do Windows
   hosts: ad_server
   tasks:
-    - name: Bloquear conta de usuário
+    - name: Crear Cuenta
       microsoft.ad.user:
-        identity: jsilva
-        enabled: no
-        description: "Cuenta bloqueada por automatización - no utilizada"
+        identity: rsouza
+        state: present
+        path: CN=Administrativo,OU=Campinas,OU=Brasil,DC=labinternal,DC=com
+        domain_username: LABINTERNAL\rsouza
+        domain_password: RogherRogher@01
 
