@@ -2,3 +2,5 @@
 - name: Gerenciar conta de usuário do Windows
   hosts: ad_server
   gather_facts: yes
+
+  

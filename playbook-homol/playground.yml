@@ -10,13 +10,7 @@
   tasks:
     - name: Bloquear conta de usuário
       microsoft.ad.user:
-        identity: 
+        identity: jsilva
         enabled: no
         description: "Cuenta bloqueada por automatización - no utilizada"
-      when: ansible_date_time.date == "2024-11-10"
 
-    - name: Desbloquear conta de usuário
-      ansible.windows.win_user:
-        name: "usuario_exemplo"
-        state: "present"
-      when: ansible_date_time.date == "2024-11-20"
