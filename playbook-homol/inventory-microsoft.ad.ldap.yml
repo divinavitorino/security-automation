@@ -2,7 +2,7 @@ all:
   hosts:
     ad_server:
       ansible_host: 10.0.0.5 
-      ansible_user: ansiblebot  
+      ansible_user: ansiblebot@labinternal.com  
       ansible_password: Recomend0698!
       ansible_connection: winrm  
       ansible_port: 5985
