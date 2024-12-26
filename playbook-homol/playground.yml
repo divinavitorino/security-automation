@@ -10,11 +10,14 @@
   tasks:
     - name: Crear Cuenta
       microsoft.ad.user:
-        identity: rsouza
-        firstname: Roberto
-        surname: Souza
+        identity: wcampos
+        firstname: Washington
+        surname: Campos
+        password: Washwash@01
+        description: Creado por automación
         state: present
-        path: CN=Administrativo,OU=Campinas,OU=Brasil,DC=labinternal,DC=com
-        domain_username: LABINTERNAL\rsouza
-        domain_password: RogherRogher@01
+        path: OU=Rio de Janeiro,OU=Brasil,DC=labinternal,DC=com
+        groups:
+          add:
+          - Diretoria Geral
 
