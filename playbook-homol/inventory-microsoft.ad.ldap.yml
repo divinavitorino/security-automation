@@ -2,8 +2,8 @@ all:
   hosts:
     ad_server:
       ansible_host: AD-DNS.labinternal.com
-      ansible_user: ansibleservice
-      ansible_password: Recomend0698!
+      ansible_user: superuser
+      ansible_password: Activedirectory2024
       ansible_connection: winrm  
       ansible_port: 5985
       ansible_winrm_transport: kerberos
