@@ -10,14 +10,14 @@
   tasks:
     - name: Crear Cuenta
       microsoft.ad.user:
-        identity: wcampos
-        firstname: Washington
-        surname: Campos
-        password: Washwash@01
+        identity: lbarbosa
+        firstname: Lara
+        surname: Barbosa
+        password: Laralara@01
         description: Creado por automación
         state: present
-        path: OU=Rio de Janeiro,OU=Brasil,DC=labinternal,DC=com
+        path: OU=Sao Paulo,OU=Brasil,DC=labinternal,DC=com
         groups:
           add:
-          - Diretoria Geral
+          - Administrativo
 
