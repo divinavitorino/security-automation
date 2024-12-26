@@ -11,13 +11,13 @@
     - name: Crear Cuenta
       microsoft.ad.user:
         identity: lbarbosa
+        domain_username: LABINTERNAL\lbarbosa
+        domain_password: Laralara@01
         firstname: Lara
         surname: Barbosa
-        password: Laralara@01
         description: Creado por automación
         state: present
         path: OU=Sao Paulo,OU=Brasil,DC=labinternal,DC=com
         groups:
           add:
           - Administrativo
-
