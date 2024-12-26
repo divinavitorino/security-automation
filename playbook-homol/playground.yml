@@ -11,6 +11,8 @@
     - name: Crear Cuenta
       microsoft.ad.user:
         identity: rsouza
+        firstname: Roberto
+        surname: Souza
         state: present
         path: CN=Administrativo,OU=Campinas,OU=Brasil,DC=labinternal,DC=com
         domain_username: LABINTERNAL\rsouza
