@@ -1,9 +1,9 @@
 ---
-- name: Gerenciar conta de usuário do Windows
+- name: Create and update user accounts on AD
   hosts: ad_server
   gather_facts: no
   tasks:
-    - name: Crear Cuenta
+    - name: Create Account
       microsoft.ad.user:
         name: lbarbosa
         state: present
