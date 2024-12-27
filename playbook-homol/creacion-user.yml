@@ -5,16 +5,16 @@
   tasks:
     - name: Crear Cuenta
       microsoft.ad.user:
-        identity: lsouza
-        firstname: Lara
-        surname: Souza
+        name: lbarbosa
         state: present
-        domain_username: LABINTERNAL\lbarbosa
-        domain_password: Laralara@01
+        firstname: Luciana Souza  
+        surname: Barbosa
+        display_name: Luciana Barbosa
+        upn: lbarbosa@labinternal.com
+        password: Laralara@01
         description: Created by automation
         path: OU=Sao Paulo,OU=Brasil,DC=labinternal,DC=com
         groups:
           add:
-          - Administrativo
-
-  
+          - Corporativo
+...
