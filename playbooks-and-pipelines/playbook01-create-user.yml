@@ -11,7 +11,7 @@
   hosts: ad_server
   gather_facts: no
   tasks:
-    - name: Create Account
+    - name: Create or Update Account
       microsoft.ad.user:
         name: lbarbosa
         state: present
