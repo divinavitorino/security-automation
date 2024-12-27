@@ -1,19 +1,23 @@
+#This playbook should be used when users are going to be away from work for reasons such as vacations, 
+#sick leave or other situations where the account should not be used for long periods. 
+#It is possible to schedule the locking and unlocking of the account with the help of Jenkins. 
+
 ---
-- name: Bloqueo de cuenta por licencia laboral
+- name: Account Lock for work absence
   hosts: ad_server
   gather_facts: yes
   tasks:
-    - name: Bloquear cuenta
+    - name: Lock Account
       microsoft.ad.user:
         identity: "{{ lookup('env', 'user_id') }}"
         enabled: no
-        description: "Licencia Laboral - Automación"
+        description: "Account Locked - Work Absence"
       when: ansible_date_time.date >= lookup('env', 'fecha_inicio') and ansible_date_time.date <= lookup('env', 'fecha_termino')
     
-    - name: Desbloquear cuenta
+    - name: Unlock Account
       microsoft.ad.user:
         identity: "{{ lookup('env', 'user_id') }}"
         enabled: yes
-        description: "En actividad normal"
+        description: "In normal activity"
       when: ansible_date_time.date >= lookup('env', 'fecha_termino')
 ...

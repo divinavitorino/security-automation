@@ -1,18 +1,18 @@
-#Este playbook busca usuarios que están activos en Active Directory pero llevan más de 45 días sin conectarse al dominio, 
-#deshabilita las cuentas y guarda la exportación de las cuentas deshabilitadas en un archivo txt.
+#This playbook searches for users who are active in Active Directory but have not connected to the domain for more than 45 days, 
+#It can be used on Ansible server or in a Jenkins job if you want to schedule its execution. 
 ---
-- name: Listar usuários activos
+- name: List Active Users
   hosts: ad_server
   gather_facts: yes
   vars:
-   days_ago: 45
+   days_ago: 45 #you can change this number if you preffer a smaller or large period of search
 
   tasks:
-    - name: Calcular timestamp para 45 días
+    - name: Calculate timestamp for the amount of days
       set_fact:
         timestamp: "{{ ((ansible_date_time.epoch | int - (days_ago * 86400)) * 10000000) + 116444736000000000 }}"   
 
-    - name: Lista de usuarios del AD
+    - name: Active Directory User List
       microsoft.ad.object_info:
         ldap_filter: "(&(objectCategory=person)(objectClass=user)(lastLogonTimestamp<={{ timestamp }})(!(userAccountControl:1.2.840.113556.1.4.803:=2)))"
         properties:
@@ -22,19 +22,19 @@
       register: ad_users
 
     
-    - name: Ver la lista resultante
+    - name: Final list
       debug:
         msg: "{{ ad_users }}"
     
-    - name: Crear lista de usuarios para bloquear
+    - name: Create list for user lock
       set_fact:
         user_block: "{{ ad_users.objects | map(attribute='sAMAccountName') | list }}"
 
-    - name: Bloquear usuarios
+    - name: Disable accounts
       microsoft.ad.user:
         identity: "{{ item }}"
         enabled: no
-        description: "Cuenta bloqueada por automatización - 45 dias sin utilización"
+        description: "Account Locked by automation - more than 45 days without usage"
       loop: "{{ user_block }}"
       loop_control:
         label: "{{ item }}"

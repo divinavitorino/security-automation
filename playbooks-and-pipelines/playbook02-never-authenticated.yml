@@ -1,33 +1,34 @@
-#Este playbook busca usuarios que están activos en Active Directory pero que nunca se han conectado al dominio, 
-#deshabilita las cuentas y guarda la exportación de las cuentas deshabilitadas en un archivo txt.
+#This playbook lists accounts in the active directory that have never authenticated. 
+#It can be used on Ansible server or in a Jenkins job if you want to schedule its execution. 
+
 ---
-- name: Listar usuários activos
+- name: List users that have never logged in
   hosts: ad_server
   gather_facts: no
 
   tasks:
-    - name: Búsqueda de usuario en AD 
+    - name: AD user search
       microsoft.ad.object_info:
         ldap_filter: "(&(objectCategory=person)(objectClass=user)(lastLogon=0)(!(userAccountControl:1.2.840.113556.1.4.803:=2)))"
         properties:
           - CN
           - sAMAccountName
           - DistinguishedName
-      register: active_users
+      register: created_users
 
-    - name: Crear lista de usuarios para bloquear
+    - name: Create user list for block
       set_fact:
-        user_block: "{{ active_users.objects | map(attribute='sAMAccountName') | list }}"
+        user_block: "{{ created_users.objects | map(attribute='sAMAccountName') | list }}"
 
-    - name: Ver la lista resultante
+    - name: Check list
       debug:
         msg: "{{ user_block }}"
 
-    - name: Bloquear usuarios
+    - name: Block users
       microsoft.ad.user:
         identity: "{{ item }}"
         enabled: no
-        description: "Cuenta bloqueada por automatización - no utilizada"
+        description: "Account locked by automation - never logged in"
       loop: "{{ user_block }}"
       loop_control:
         label: "{{ item }}"
