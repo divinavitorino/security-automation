@@ -1,6 +1,20 @@
 ---
 - name: Gerenciar conta de usuário do Windows
   hosts: ad_server
-  gather_facts: yes
+  gather_facts: no
+  tasks:
+    - name: Crear Cuenta
+      microsoft.ad.user:
+        identity: lsouza
+        firstname: Lara
+        surname: Souza
+        state: present
+        domain_username: LABINTERNAL\lbarbosa
+        domain_password: Laralara@01
+        description: Created by automation
+        path: OU=Sao Paulo,OU=Brasil,DC=labinternal,DC=com
+        groups:
+          add:
+          - Administrativo
 
   

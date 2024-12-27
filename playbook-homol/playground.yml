@@ -5,19 +5,19 @@
 # tarefa -> uma operação aplicada a um host ou grupo de hosts
 # handler -> gatilho para tarefa específica (caso use mais de um handler, colocar em lista)
 ---
-- name: Gerenciar conta de usuário do Windows
-  hosts: ad_server
-  tasks:
-    - name: Crear Cuenta
-      microsoft.ad.user:
-        identity: lbarbosa
-        domain_username: LABINTERNAL\lbarbosa
-        domain_password: Laralara@01
-        firstname: Lara
-        surname: Barbosa
-        description: Creado por automación
-        state: present
-        path: OU=Sao Paulo,OU=Brasil,DC=labinternal,DC=com
-        groups:
-          add:
-          - Administrativo
+ - name: Crear Cuenta
+    microsoft.ad.user:
+      identity: lsouza
+      domain_username: lsouza
+      domain_password: Laralara@01
+      firstname: Lara
+      surname: Souza
+      display_name: Lara Souza
+      description: Created by automation
+      state: present
+      path: OU=Sao Paulo,OU=Brasil,DC=labinternal,DC=com
+      groups:
+        add:
+        - Administrativo
+
+  
