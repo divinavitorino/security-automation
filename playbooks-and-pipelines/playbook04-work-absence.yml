@@ -1,6 +1,7 @@
 #This playbook should be used when users are going to be away from work for reasons such as vacations, 
 #sick leave or other situations where the account should not be used for long periods. 
 #It is possible to schedule the locking and unlocking of the account with the help of Jenkins. 
+#This playbook is ready to be used for Jenkins
 
 ---
 - name: Account Lock for work absence
