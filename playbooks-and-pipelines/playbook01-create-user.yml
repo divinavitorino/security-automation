@@ -2,6 +2,7 @@
 # and performing the following tasks:
 #- placing it in one or more user groups
 #- allocating the user to the correct OU
+#- sets password to be changed on next logon
 # this playbook can be used manually, run from the ansible server or inserted into a Jenkins job. 
 # The following version is prepared for use with Jenkins. 
 
@@ -20,6 +21,7 @@
         display_name: Luciana Barbosa
         upn: lbarbosa@labinternal.com
         password: Laralara@01
+        password_expired: true
         description: Created by automation
         path: OU=Sao Paulo,OU=Brasil,DC=labinternal,DC=com
         groups:
