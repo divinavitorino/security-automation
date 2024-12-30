@@ -13,18 +13,18 @@
   tasks:
     - name: Create or Update Account
       microsoft.ad.user:
-        name: lbarbosa
+        name: "{{ lookup('env', 'user_id') }}"
         state: present
-        firstname: Luciana Souza  
-        surname: Barbosa
-        email: luciana.barbosa@labadventures.com
-        display_name: Luciana Barbosa
-        upn: lbarbosa@labinternal.com
-        password: Laralara@01
+        firstname: "{{ lookup('env', 'firstname') }}"  
+        surname: "{{ lookup('env', 'last_name') }}"
+        email: "{{ lookup('env', 'email') }}"
+        display_name: "{{ lookup('env', 'display_name') }}"
+        upn: "{{ lookup('env', 'display_name') }}"
+        password: "{{ lookup('env', 'password') }}"
         password_expired: true
         description: Created by automation
-        path: OU=Sao Paulo,OU=Brasil,DC=labinternal,DC=com
+        path: "{{ lookup('env', 'path') }}"
         groups:
           add:
-          - Corporativo
+          "{{ lookup('env', 'groups') }}"
 ...
