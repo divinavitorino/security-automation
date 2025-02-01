@@ -21,6 +21,7 @@
         display_name: "{{ lookup('env', 'display_name') }}"
         email: "{{ lookup('env', 'email') }}"
         upn: "{{ lookup('env', 'name_domain') }}"
+        password: 123Change
         password_expired: true
         description: Created by automation
         path: "{{ lookup('env', 'path') }}"
