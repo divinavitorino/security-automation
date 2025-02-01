@@ -32,5 +32,5 @@
             manager: "{{ lookup('env', 'manager') }}"
         groups:
           add:
-            "{{ lookup('env', 'groups' }}"
+            "{{ lookup('env', 'manager') }}"
 ...
