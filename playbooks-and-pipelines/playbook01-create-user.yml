@@ -26,5 +26,5 @@
         path: "{{ lookup('env', 'path') }}"
         groups:
           add:
-            "{{ lookup('env', 'groups') }}"
+            "{{ groups }}"
 ...
