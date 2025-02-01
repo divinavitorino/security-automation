@@ -10,8 +10,6 @@
 - name: Create and update user accounts on AD
   hosts: ad_server
   gather_facts: no
-  vars:
-    user_group: "{{ user_group_param.split(',') }}"
   tasks:
     - name: Create or Update Account
       microsoft.ad.user:
