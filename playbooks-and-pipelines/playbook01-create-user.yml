@@ -16,6 +16,11 @@
         identity: "{{ lookup('env', 'user_id') }}"
         name: "{{ lookup('env', 'name') }}"
         state: present
+        attributes:
+          set:
+            title: "{{ lookup('env', 'title') }}"
+            department: "{{ lookup('env', 'department') }}"
+            manager: "{{ lookup('env', 'manager') }}"
         password: 123Change
         password_expired: true
         description: Created by automation
