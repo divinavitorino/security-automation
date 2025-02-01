@@ -21,6 +21,7 @@
             title: "{{ lookup('env', 'title') }}"
             department: "{{ lookup('env', 'department') }}"
             manager: "{{ lookup('env', 'manager') }}"
+        path: "{{ lookup('env', 'organization_unit') }}"
         groups:
           add:
           - "{{ lookup('env', 'user_group') }}"
