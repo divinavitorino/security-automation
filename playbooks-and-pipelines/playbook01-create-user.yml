@@ -16,18 +16,7 @@
         identity: "{{ lookup('env', 'user_id') }}"
         name: "{{ lookup('env', 'name') }}"
         state: present
-        firstname: "{{ lookup('env', 'firstname') }}"  
-        surname: "{{ lookup('env', 'last_name') }}"
-        display_name: "{{ lookup('env', 'display_name') }}"
-        email: "{{ lookup('env', 'email') }}"
-        upn: "{{ lookup('env', 'name_domain') }}"
         password: 123Change
         password_expired: true
         description: Created by automation
-        path: "{{ lookup('env', 'path') }}"
-        attributes:
-          set:
-            title: "{{ lookup('env', 'title') }}"
-            department: "{{ lookup('env', 'department') }}"
-            manager: "{{ lookup('env', 'manager') }}"
 ...
