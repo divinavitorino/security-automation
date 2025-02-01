@@ -13,18 +13,24 @@
   tasks:
     - name: Create or Update Account
       microsoft.ad.user:
-        name: "{{ lookup('env', 'user_id') }}"
+        identity: "{{ lookup('env', 'user_id') }}"
+        name: "{{ lookup('env', 'name') }}"
         state: present
         firstname: "{{ lookup('env', 'firstname') }}"  
         surname: "{{ lookup('env', 'last_name') }}"
-        email: "{{ lookup('env', 'email') }}"
         display_name: "{{ lookup('env', 'display_name') }}"
-        upn: "{{ lookup('env', 'display_name') }}"
+        email: "{{ lookup('env', 'email') }}"
+        upn: "{{ lookup('env', 'name_domain') }}"
         password: "{{ lookup('env', 'password') }}"
         password_expired: true
         description: Created by automation
         path: "{{ lookup('env', 'path') }}"
+        attributes:
+          set:
+            title: "{{ lookup('env', 'title') }}"
+            department: "{{ lookup('env', 'department') }}"
+            manager: "{{ lookup('env', 'manager') }}"
         groups:
           add:
-            "{{ groups }}"
+            "{{ lookup('env', 'groups' }}"
 ...
