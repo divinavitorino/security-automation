@@ -11,19 +11,23 @@
   tasks:
     - name: Crear Cuenta
       microsoft.ad.user:
-        name: lbarbosa
+        identity: gcarvalho
         state: present
-        firstname: Luciana Souza  
-        surname: Barbosa
-        display_name: Luciana Barbosa
-        title: Analista Administrativo Pl
-        department: Financeiro
-        email: luciana.barbosa@labadventures.com
-        upn: lbarbosa@labinternal.com
-        password: Laralara@01
+        name: Giovana Carvalho Almeida
+        firstname: Giovanna Carvalho   
+        surname: Almeida
+        display_name: Giovana Almeida
+        password: Giocargiocar@01
+        email: giovana.carvalho@labadventures.com
+        upn: gcarvalho@labinternal.com
         description: Created by automation
-        path: OU=Sao Paulo,OU=Brasil,DC=labinternal,DC=com
+        path: OU=Rio de Janeiro,OU=Brasil,DC=labinternal,DC=com
+        attributes:
+          set:
+            title: CEO
+            department: Diretoria
+            manager:
         groups:
           add:
-          - Corporativo
+          - Diretoria Geral
 ...
