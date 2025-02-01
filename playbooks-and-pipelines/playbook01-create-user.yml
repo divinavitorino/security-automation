@@ -17,6 +17,10 @@
         state: present
         name: "{{ lookup('env', 'name') }}"
         upn: "{{ lookup('env', 'user_domain') }}"
+        firstname:     
+        surname: 
+        display_name:
+        email:  
         attributes:
           set:
             title: "{{ lookup('env', 'title') }}"
