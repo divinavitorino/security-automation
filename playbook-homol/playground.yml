@@ -11,23 +11,14 @@
   tasks:
     - name: Crear Cuenta
       microsoft.ad.user:
-        identity: rsouza
-        state: absent
-        name: Giovana Carvalho Almeida
-        firstname: Giovanna Carvalho   
-        surname: Almeida
-        display_name: Giovana Almeida
+        identity: jsilva
+        state: present
+        name: Joao Pedro Silva
+        firstname: Joao Pedro    
+        surname: Silva
+        display_name: Joao Pedro Silva
         password: 123Change
-        email: giovana.carvalho@labadventures.com
-        upn: gcarvalho@labinternal.com
+        email: joao.silva@labadventures.com
+        upn: jsilva@labinternal.com
         description: Created by automation
-        path: OU=Rio de Janeiro,OU=Brasil,DC=labinternal,DC=com
-        attributes:
-          set:
-            title: CEO
-            department: Diretoria
-            manager:
-        groups:
-          add:
-          - Diretoria Geral
 ...
