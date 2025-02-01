@@ -14,8 +14,9 @@
     - name: Create Account
       microsoft.ad.user:
         identity: "{{ lookup('env', 'user_id') }}"
-        name: "{{ lookup('env', 'name') }}"
         state: present
+        name: "{{ lookup('env', 'name') }}"
+        upn: "{{ lookup('env', 'user_domain') }}"
         attributes:
           set:
             title: "{{ lookup('env', 'title') }}"

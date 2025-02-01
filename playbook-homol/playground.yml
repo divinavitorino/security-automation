@@ -11,7 +11,7 @@
   tasks:
     - name: Crear Cuenta
       microsoft.ad.user:
-        identity: jsilva
+        identity: rsouza
         state: absent
         name: Giovana Carvalho Almeida
         firstname: Giovanna Carvalho   
