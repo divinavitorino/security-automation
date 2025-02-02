@@ -12,7 +12,10 @@
     - name: Crear Cuenta
       microsoft.ad.user:
         identity: clima
-        state: preent
+        state: present
         firstname: Clara Silva 
         surname: Lima
+        groups:
+          add:
+            - Logistica
 ...
