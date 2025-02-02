@@ -105,4 +105,65 @@ Ansible collection for Microsoft AD management
 
 ansible-galaxy collection install microsoft.ad
 
+# Configuring Ansible Vault
+
+Ansible Vault allows you to encrypt sensitive data such as passwords or keys.
+
+## Encrypting a Password
+
+To encrypt a password, use the following command:
+
+ansible-vault encrypt_string 'your_password' --name 'vault_password'
+
+This will output the encrypted string, which you can add to your playbook or variable file.
+
+vault_password: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          3132333435363738393031323334353637383930313233343536373839303132
+
+When running the playbook, provide the vault password using the --ask-vault-pass option:
+
+ansible-playbook playbook.yml --ask-vault-pass
+
 # Additional packages (Jenkins)
+
+
+To connect Jenkins with Active Directory, you need the following additional packages. First, open Jenkins in your web browser: `http://<serveripaddress>:8080`
+
+
+- Active Directory Plugin
+
+1. Go to `Manage Jenkins` > `Manage Plugins`
+2. In the `Available` tab, search for `Active Directory Plugin`
+3. Select the plugin and click `Install without restart`
+
+- Ansible Plugin
+
+1. Go to `Manage Jenkins` > `Manage Plugins`
+2. In the `Available` tab, search for `Ansible Plugin`
+3. Select the plugin and click `Install without restart`
+
+- Ansible Vault Plugin
+
+1. Go to `Manage Jenkins` > `Manage Plugins`
+2. In the `Available` tab, search for `Ansible Plugin`
+3. Select the plugin and click `Install without restart`
+
+- Pipeline Plugin
+
+1. Go to `Manage Jenkins` > `Manage Plugins`
+2. In the `Available` tab, search for `Pipeline`
+3. Select the plugin and click `Install without restart`
+
+## Configure Ansible Vault Password in Jenkins
+
+1. Open Jenkins in your web browser: `http://<serveripaddress>:8080`
+2. Go to `Manage Jenkins` > `Manage Credentials`
+3. Click on `(global)` to add a new credential
+4. Click `Add Credentials`
+5. Select `Secret text` as the kind
+6. Enter your Ansible Vault password in the `Secret` field
+7. Provide an ID for the credential, e.g., `ansible-vault-password`
+8. Click `OK`
+
+Now you are ready to go and use the available playbooks or develop new ones according to your needs! :)
