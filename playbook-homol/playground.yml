@@ -12,6 +12,7 @@
     - name: Crear Cuenta
       microsoft.ad.user:
         identity: clima
-        state: absent
- 
+        state: preent
+        firstname: Clara Silva 
+        surname: Lima
 ...
