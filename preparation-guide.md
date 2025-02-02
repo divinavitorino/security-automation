@@ -2,8 +2,8 @@
 
 Automation for Windows environments can be tricky. 
 Due to its particularities and Operating System architecture, setting up this environment may require additional time. 
-However, the good news is: this is a preparation that is done only once. Then, just develop the playbooks according to your needs and you’re done. I will leave the ones I developed for my project to serve you as a guide.
-The Security Automation for SMBs project relies on open source tools to create an implementation framework for routine identity management tasks.
+However, the good news is: this is a preparation that is done only once. Then, just develop the playbooks according to your needs and you’re done. 
+I will leave the ones I developed for my project to serve you as a guide.
 
 
 # Infrastructure Requirements
@@ -41,55 +41,68 @@ The Security Automation for SMBs project relies on open source tools to create a
 > [!NOTE]
 > In this scenario, I deployed Ansible and Jenkins on the same server (that uses Ubuntu 22.04), using the Azure cloud. However, from this point on, the chosen architecture (on-premises or cloud) will make little difference.
 
-# Package installation
+# Ansible and Jenkins installation
 
-## Ansible
+Before starting, update the system packages:
 
-- python 
-- openjdk 
-- ansible
+sudo apt update
+sudo apt upgrade -y
+
+Ansible needs Python. Install this package first:
+
+sudo apt install -y python3 python3-pip
+
+## Ansible Installation
+
+Run the command
 
 python3 -m pip install --user ansible
 
-- Ansible collection for Microsoft AD management
+Check the version to make sure the installation runned successfully
+
+ansible --version
+
+## Jenkins Installation
+
+For Jenkins installation, it is necessary to add the key and repository according to operational system. Please, before proceed, check the procedure on https://www.jenkins.io/doc/book/installing/linux/
+
+To install Jenkins:
+
+sudo apt install -y jenkins
+
+Enable Jenkins Service:
+
+sudo systemctl start jenkins
+sudo systemctl enable jenkins
+
+Check service status
+
+sudo systemctl status jenkins
+
+Access the web interface of Jenkins - http://<serveripaddress>:8080
+
+It is necessary the initial password for the first access. It is stored on a file. Recover it unsing the command
+
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+
+# Additional packages(Linux)
+
+To connect Ansible and Jenkins with Active Directory, you need the following additional packages:
+
+Kerberos library for Python
+
+apt-get -y install python-dev libkrb5-dev krb5-user
+
+Kerberos Client
+
+pip install krb5
+
+Remote access using WINRM
+
+pip install pywinrm
+
+Ansible collection for Microsoft AD management
 
 ansible-galaxy collection install microsoft.ad
 
-- Kerberos library for Python ->  apt-get -y install python-dev libkrb5-dev krb5-user
-- Kerberos Client ->pip install krb5
-- Remote access using WINRM -> pip install pywinrm
-
-## Jenkins
-
-sudo su - jenkins
-
-- Kerberos library for Python ->  apt-get -y install python-dev libkrb5-dev krb5-user
-- Kerberos Client ->pip install krb5
-- Remote access using WINRM -> pip install pywinrm
-
-# Linux Configuration files
-
-- /etc/hosts -> include the IP address and name of the Active Directory Servers
-- /etc/krb5.conf -> configure the Active Directory Servers on the sessions:
-
-[realms]
-
-    MY.DOMAIN.COM = {
-    
-        kdc = domain-controller1.my.domain.com
-        
-        kdc = domain-controller2.my.domain.com
-    }
-
-[domain_realm]
-    
-    .my.domain.com = MY.DOMAIN.COM
-
-# Additional Configurations
-
-## Ansible
-- Ansible Vault
-
-## Jenkins
-- SMTP Server
-- Timezone
+# Additional packages (Jenkins)
