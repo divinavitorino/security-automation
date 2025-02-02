@@ -1,0 +1,37 @@
+# This playbook creates a user in Active Directory by filling in the basic fields (login, password and email) 
+# and performing the following tasks:
+#- placing it in one or more groups
+#- allocating the user to the correct OU
+#- sets password to be changed on next logon
+# this version of the playbook can be used running from the Ansible Server 
+# The following version is prepared for use on the Ansible Server
+
+---
+- name: Create and update user accounts on AD
+  hosts: ad_server
+  gather_facts: no
+  tasks:
+    - name: Create Account
+      microsoft.ad.user:
+        identity:  #the user id that is going to be created/changed
+        state: present
+        name: #insert the full name of the user
+        upn:  #Insert the user and domain at the format: user@domain
+        firstname:       
+        surname: 
+        display_name: #generally the first and last name
+        email:  
+        attributes:
+          set:
+            title: #Insert job title
+            department: 
+            manager: # CN=full name of user ,OU=state,OU=country,DC=domain,DC=com
+        path: 
+        groups:
+          add: #with the ansible playbook, you can add as many groups as needed, one per line
+          - 
+          -
+        password: 123Change
+        password_expired: true
+        description: Created by automation
+...

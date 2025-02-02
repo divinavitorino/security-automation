@@ -3,8 +3,8 @@
 #- placing it in one group
 #- allocating the user to the correct OU
 #- sets password to be changed on next logon
-# this playbook can be used manually, run from the ansible server or inserted into a Jenkins job. 
-# The following version is prepared for use with Jenkins. 
+# this playbook can be used inserted into a Jenkins job. 
+# The following version is prepared for use with Jenkins server 
 
 ---
 - name: Create and update user accounts on AD
@@ -13,7 +13,7 @@
   tasks:
     - name: Create Account
       microsoft.ad.user:
-        identity: "{{ lookup('env', 'user_id') }}"
+        identity: "{{ lookup('env', 'user_id') }}" #all fields should be mapped with the parameter on the routine
         state: present
         name: "{{ lookup('env', 'name') }}"
         upn: "{{ lookup('env', 'user_domain') }}"
