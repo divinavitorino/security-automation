@@ -1,6 +1,6 @@
 # This playbook creates a user in Active Directory by filling in the basic fields (login, password and email) 
 # and performing the following tasks:
-#- placing it in one or more user groups
+#- placing it in one group
 #- allocating the user to the correct OU
 #- sets password to be changed on next logon
 # this playbook can be used manually, run from the ansible server or inserted into a Jenkins job. 
