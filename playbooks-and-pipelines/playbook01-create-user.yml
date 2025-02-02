@@ -17,10 +17,10 @@
         state: present
         name: "{{ lookup('env', 'name') }}"
         upn: "{{ lookup('env', 'user_domain') }}"
-        firstname:      
-        surname: 
-        display_name:
-        email:  
+        firstname: "{{ lookup('env', 'first_name') }}"      
+        surname: "{{ lookup('env', 'surname') }}"
+        display_name: "{{ lookup('env', 'display_name') }}"
+        email:  "{{ lookup('env', 'email') }}"
         attributes:
           set:
             title: "{{ lookup('env', 'title') }}"
@@ -33,6 +33,4 @@
         password: 123Change
         password_expired: true
         description: Created by automation
-     # with_items: 
-     # - "{{ lookup('env', 'user_group') | split('\n') }}"
 ...
