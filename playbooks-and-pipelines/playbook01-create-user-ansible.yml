@@ -3,6 +3,7 @@
 #- placing it in one or more groups
 #- allocating the user to the correct OU
 #- sets password to be changed on next logon
+#- Change user id attributes
 # this version of the playbook can be used running from the Ansible Server 
 # The following version is prepared for use on the Ansible Server
 
