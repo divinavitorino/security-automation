@@ -11,13 +11,7 @@
   tasks:
     - name: Crear Cuenta
       microsoft.ad.user:
-        identity: jsilva
-        state: present
-        name: Joao Pedro Silva
-        firstname: Joao Pedro    
-        surname: Silva
-        display_name: Joao Pedro Silva
-        password: 123Change
-        email: joao.silva@labadventures.com
-        description: Created by automation
+        identity: clima
+        state: absent
+ 
 ...
