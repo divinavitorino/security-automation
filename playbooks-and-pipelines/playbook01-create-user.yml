@@ -29,10 +29,10 @@
         path: "{{ lookup('env', 'organization_unit') }}"
         groups:
           add:
-          - "{{ item }}"
+          - "{{ lookup('env', 'user_group') }}"
         password: 123Change
         password_expired: true
         description: Created by automation
-      with_items: 
-      - "{{ lookup('env', 'user_group') | split('\n') }}"
+     # with_items: 
+     # - "{{ lookup('env', 'user_group') | split('\n') }}"
 ...
