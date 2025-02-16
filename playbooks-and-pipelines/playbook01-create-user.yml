@@ -31,6 +31,5 @@
           add:
           - "{{ lookup('env', 'user_group') }}"
         password: 123Change
-        password_expired: true
         description: Created by automation
 ...

@@ -33,6 +33,5 @@
           - 
           -
         password: 123Change
-        password_expired: true
         description: Created by automation
 ...
