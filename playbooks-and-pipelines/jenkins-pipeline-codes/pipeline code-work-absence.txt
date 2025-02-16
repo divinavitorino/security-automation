@@ -4,24 +4,24 @@ pipeline {
         ansiColor('gnome-terminal') 
     }
     stages {
-        stage('Clonar el repositorio') {
+        stage('Repository Clone') {
             steps{
-              git branch: 'main', changelog: false, url: '[Ingrese la URL del repositorio de github]'
+              git branch: 'main', changelog: false, url: '[URL github repository]'
             }
         }
-        stage ('Bloquear usuario') {
+        stage ('Block user') {
             steps{
-              ansiblePlaybook colorized: true, installation: 'ansible', inventory: '[archivo de inventario ansible]', limit: 'all', playbook: '[archivo de playbook]' 
+              ansiblePlaybook colorized: true, installation: 'ansible', inventory: '[inventory file]', limit: 'all', playbook: '[archivo de playbook]' 
             }
         }
-        stage('Pausa de ejecución') {
+        stage('Block Sleep') {
             steps{
-                sleep time: "${tiempo_sleep}", unit: 'DAYS'
+                sleep time: "${time_sleep}", unit: 'DAYS'
             }
         }
-        stage ('Desbloquear usuario') {
+        stage ('Unblock user') {
             steps{
-              ansiblePlaybook colorized: true, installation: 'ansible', inventory: '[archivo de inventario ansible]', limit: 'all', playbook: '[archivo de playbook]' 
+              ansiblePlaybook colorized: true, installation: 'ansible', inventory: '[inventory file]', limit: 'all', playbook: '[playbook file]' 
             }
         }
     }
