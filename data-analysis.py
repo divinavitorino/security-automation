@@ -64,7 +64,7 @@ plt.title("Correlation Heatmap")
 plt.show()
 
 
-#Desvio padrão
+#Standard deviation
 dev_std = df_number.std()
 print(dev_std)
 
@@ -76,10 +76,10 @@ for i, col1 in enumerate(df_number.columns):
         if i < j:  # Evita duplicar combinações e auto-correlação
             correlation, p_value = pearsonr(df_number[col1], df_number[col2])
             df_result = pd.DataFrame({
-                "Coluna1": [col1],
-                "Coluna2": [col2],
-                "Correlação": [round(correlation, 2)],
-                "Valor de p": [round(p_value, 2)]
+                "Column1": [col1],
+                "Column2": [col2],
+                "Correlation": [round(correlation, 2)],
+                "p-value": [round(p_value, 2)]
             })
             matrix_final.append(df_result)
 results_df = pd.concat(matrix_final, ignore_index=True)
