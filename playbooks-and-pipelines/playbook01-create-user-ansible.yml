@@ -14,7 +14,7 @@
   tasks:
     - name: Create Account
       microsoft.ad.user:
-        identity:  #the user id that is going to be created/changed
+        identity:  jsilva #the user id that is going to be created/changed
         state: present
         name: #insert the full name of the user
         upn:  #Insert the user and domain at the format: user@domain
@@ -24,7 +24,7 @@
         email:  
         attributes:
           set:
-            sAMAccountName: #Insert the user id
+            sAMAccountName: jsilva #Insert the user id
             title: #Insert job title
             department: 
             manager: # CN=full name of user ,OU=state,OU=country,DC=domain,DC=com
