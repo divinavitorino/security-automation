@@ -14,20 +14,19 @@
   tasks:
     - name: Create Account
       microsoft.ad.user:
-        identity: "{{ lookup('env', 'user_id') }}" #all fields should be mapped with the parameter on the routine
-        state: present
-        name: "{{ lookup('env', 'name') }}"
-        upn: "{{ lookup('env', 'user_domain') }}"
-        firstname: "{{ lookup('env', 'first_name') }}"      
-        surname: "{{ lookup('env', 'surname') }}"
-        display_name: "{{ lookup('env', 'display_name') }}"
-        email:  "{{ lookup('env', 'email') }}"
-        attributes:
+        attributes: #all fields should be mapped with the parameter on the routine
           set:
             sAMAccountName: "{{ lookup('env', 'sAMAccountName') }}"
             title: "{{ lookup('env', 'title') }}"
             department: "{{ lookup('env', 'department') }}"
-            manager: "{{ lookup('env', 'manager') }}"
+            manager: "{{ lookup('env', 'manager') }}" 
+        upn: "{{ lookup('env', 'user_domain') }}"
+        state: present
+        name: "{{ lookup('env', 'name') }}"
+        firstname: "{{ lookup('env', 'first_name') }}"      
+        surname: "{{ lookup('env', 'surname') }}"
+        display_name: "{{ lookup('env', 'display_name') }}"
+        email:  "{{ lookup('env', 'email') }}"
         path: "{{ lookup('env', 'organization_unit') }}"
         groups:
           add:
