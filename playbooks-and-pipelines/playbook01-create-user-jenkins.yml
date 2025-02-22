@@ -2,7 +2,8 @@
 # and performing the following tasks:
 #- placing it in one group
 #- allocating the user to the correct OU
-#- sets password to be changed on next logon
+#- sets initial password
+#- sets default groups
 # this playbook can be used inserted into a Jenkins job. 
 # The following version is prepared for use with Jenkins server 
 
