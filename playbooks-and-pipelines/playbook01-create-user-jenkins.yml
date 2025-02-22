@@ -17,7 +17,6 @@
         identity: "{{ lookup('env', 'user_id') }}"
         attributes: #all fields should be mapped with the parameter on the routine
           set:
-            sAMAccountName: "{{ lookup('env', 'sAMAccountName') }}"
             title: "{{ lookup('env', 'title') }}"
             department: "{{ lookup('env', 'department') }}"
             manager: "{{ lookup('env', 'manager') }}" 
