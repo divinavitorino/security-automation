@@ -24,6 +24,7 @@
         email:  
         attributes:
           set:
+            sAMAccountName: #Insert the user id
             title: #Insert job title
             department: 
             manager: # CN=full name of user ,OU=state,OU=country,DC=domain,DC=com

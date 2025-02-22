@@ -23,6 +23,7 @@
         email:  "{{ lookup('env', 'email') }}"
         attributes:
           set:
+            sAMAccountName: "{{ lookup('env', 'user_id') }}"
             title: "{{ lookup('env', 'title') }}"
             department: "{{ lookup('env', 'department') }}"
             manager: "{{ lookup('env', 'manager') }}"
