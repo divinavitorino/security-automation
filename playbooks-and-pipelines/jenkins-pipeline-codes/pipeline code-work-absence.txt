@@ -3,25 +3,40 @@ pipeline {
     options {
         ansiColor('gnome-terminal') 
     }
+    environment {
+        VAULT_SECRET = credentials('2')
+    }
     stages {
         stage('Repository Clone') {
-            steps{
-              git branch: 'main', changelog: false, url: '[URL github repository]'
+            steps {
+                git branch: 'main', changelog: false, url: 'https://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@github.com/divinavitorino/security-automation.git'
             }
         }
-        stage ('Block user') {
-            steps{
-              ansiblePlaybook colorized: true, installation: 'ansible', inventory: '[inventory file]', limit: 'all', playbook: '[archivo de playbook]' 
+        stage('Block User') {
+            steps {
+                withCredentials([string(credentialsId: '2', variable: 'VAULT_SECRET')]) {
+                    sh '''
+                    echo $VAULT_SECRET > /tmp/vault_secret
+                    ansible-playbook -i /var/lib/jenkins/inventory-file.yml --vault-password-file /tmp/vault_secret playbooks-and-pipelines/playbook04-work-absence.yml
+                    rm /tmp/vault_secret
+                    '''
+                }
             }
         }
         stage('Block Sleep') {
-            steps{
-                sleep time: "${time_sleep}", unit: 'DAYS'
+            steps {
+                sleep time: "${sleep_time}", unit: 'DAYS'
             }
         }
-        stage ('Unblock user') {
-            steps{
-              ansiblePlaybook colorized: true, installation: 'ansible', inventory: '[inventory file]', limit: 'all', playbook: '[playbook file]' 
+        stage('Unblock user') {
+            steps {
+                withCredentials([string(credentialsId: '2', variable: 'VAULT_SECRET')]) {
+                    sh '''
+                    echo $VAULT_SECRET > /tmp/vault_secret
+                    ansible-playbook -i /var/lib/jenkins/inventory-file.yml --vault-password-file /tmp/vault_secret playbooks-and-pipelines/playbook04-work-absence.yml
+                    rm /tmp/vault_secret
+                    '''   
+                }
             }
         }
     }
