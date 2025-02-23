@@ -13,12 +13,12 @@
         identity: "{{ lookup('env', 'user_id') }}"
         enabled: no
         description: "Account Locked - Work Absence"
-      when: ansible_date_time.date >= lookup('env', 'fecha_inicio') and ansible_date_time.date <= lookup('env', 'fecha_termino')
+      when: ansible_date_time.date >= lookup('env', 'date_start') and ansible_date_time.date <= lookup('env', 'date_finish')
     
     - name: Unlock Account
       microsoft.ad.user:
         identity: "{{ lookup('env', 'user_id') }}"
         enabled: yes
         description: "In normal activity"
-      when: ansible_date_time.date >= lookup('env', 'fecha_termino')
+      when: ansible_date_time.date >= lookup('env', 'date_finish')
 ...
