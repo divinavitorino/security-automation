@@ -1,10 +1,11 @@
 #This is the .py file is a basic analysis of data correlation
 #With this analysis it was possible to determine the correlation 
-#between the data, eliminating the possibility that this correlation occurred by chance.
+#between the data, eliminating the possibility that this correlation 
+#occurred by chance.
 
 #Data cleanup - it's important before starting the analysis to clean the data
-#that is going to be used. That includes: removing blank, N/A and columns that are not going
-#to be used.
+#that is going to be used. That includes: removing blank, N/A and columns 
+# that are not going to be used.
 
 #vars - don't forget to change the names to the vars that are currently on your project
 #colors - feel free to change the color of the graphics. Consult the package documentation
