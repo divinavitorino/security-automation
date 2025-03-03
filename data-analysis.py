@@ -45,7 +45,7 @@ plt.show()
 plt.scatter(df["skill_ansible"], df["atuacao_iam"])
 plt.xlabel("Ansible")
 plt.ylabel("iam")
-plt.title("Gráfico de Dispersão")
+plt.title("Dispersion Graph")
 plt.show()
 
 #Heatmap Correlation Matrix
@@ -55,7 +55,7 @@ df_number = df_number.drop(columns=['skill_read_ingles'])
 correlacao = df_number.corr().values
 col = df_number.columns
 fig, ax = plt.subplots(figsize=(8, 6))
-cax = ax.matshow(correlacao, cmap="gray")  # Criar o heatmap
+cax = ax.matshow(correlacao, cmap="gray")  # Create  heatmap
 plt.colorbar(cax)  # Barra de cores
 ax.set_xticks(np.arange(len(col)))
 ax.set_yticks(np.arange(len(col)))
