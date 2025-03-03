@@ -68,12 +68,12 @@ plt.show()
 dev_std = df_number.std()
 print(dev_std)
 
-#Matriz correlação e p-valor
+#Correlation matrix and p-value
 df_number = df.select_dtypes(include=["number"])
 matrix_final = []
 for i, col1 in enumerate(df_number.columns):
     for j, col2 in enumerate(df_number.columns):
-        if i < j:  # Evita duplicar combinações e auto-correlação
+        if i < j:  # avoid autocorrelation
             correlation, p_value = pearsonr(df_number[col1], df_number[col2])
             df_result = pd.DataFrame({
                 "Column1": [col1],
