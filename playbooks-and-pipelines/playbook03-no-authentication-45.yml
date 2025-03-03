@@ -3,7 +3,7 @@
 ---
 - name: List Active Users
   hosts: ad_server
-  gather_facts: yes
+  gather_facts: yes #for tasks that need date and time operations, it is necessary to use gather facts
   vars:
    days_ago: 45 #you can change this number if you preffer a smaller or large period of search
 

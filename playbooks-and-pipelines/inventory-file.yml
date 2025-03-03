@@ -3,11 +3,11 @@
 # on Ansible Vault to make sure that they are not hardcoded. 
 # This may expose your production environment!
 all:
-  hosts:
-    ad_server:
+  hosts: #hosts that are going to execute the playbook
+    ad_server: #this group can include other servers if needed
       ansible_host: 10.0.0.5  
       ansible_user: superuser  
-      ansible_password: !vault |
+      ansible_password: !vault | #password encrypted with ansible-vault
           $ANSIBLE_VAULT;1.1;AES256
           36313666333139343931623031363233343639363233636434396162316666373263336439653234
           6132346631663331373033333435656634386461623766330a613134616333373435306638643332
@@ -17,4 +17,4 @@ all:
       ansible_connection: winrm  
       ansible_port: 5985
       ansible_winrm_transport: kerberos  
-      ansible_winrm_server_cert_validation: ignore
+      ansible_winrm_server_cert_validation: ignore #if a CA server is available, change to 'validate'
