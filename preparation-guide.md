@@ -35,6 +35,7 @@ I will leave the ones I developed for my project to serve you as a guide.
 - Configure TrustedHosts file to permit only the connection from Ansible and Jenkins Server
 
 [Powershell]
+
     Set-Item WSMan:localhost\client\trustedhosts -value Servername -Force
 
 
