@@ -34,7 +34,7 @@ I will leave the ones I developed for my project to serve you as a guide.
 - Enable winrm Service on Active Directory
 - Configure TrustedHosts file to permit only the connection from Ansible and Jenkins Server
 
-[Powershell]
+[Powershell Command]
 
     Set-Item WSMan:localhost\client\trustedhosts -value Servername -Force
 
@@ -46,22 +46,22 @@ I will leave the ones I developed for my project to serve you as a guide.
 
 Before starting, update the system packages:
 
-sudo apt update
-sudo apt upgrade -y
+    sudo apt update
+    sudo apt upgrade -y
 
 Ansible needs Python. Install this package first:
 
-sudo apt install -y python3 python3-pip
+    sudo apt install -y python3 python3-pip
 
 ## Ansible Installation
 
 Run the command
 
-python3 -m pip install --user ansible
+    python3 -m pip install --user ansible
 
 Check the version to make sure the installation runned successfully
 
-ansible --version
+    ansible --version
 
 ## Jenkins Installation
 
@@ -69,22 +69,22 @@ For Jenkins installation, it is necessary to add the key and repository accordin
 
 To install Jenkins:
 
-sudo apt install -y jenkins
+    sudo apt install -y jenkins
 
 Enable Jenkins Service:
 
-sudo systemctl start jenkins
-sudo systemctl enable jenkins
+    sudo systemctl start jenkins
+    sudo systemctl enable jenkins
 
 Check service status
 
-sudo systemctl status jenkins
+    sudo systemctl status jenkins
 
 Access the web interface of Jenkins - http://<serveripaddress>:8080
 
 It is necessary the initial password for the first access. It is stored on a file. Recover it unsing the command
 
-sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+    sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
 # Additional packages(Linux)
 
@@ -92,19 +92,19 @@ To connect Ansible and Jenkins with Active Directory, you need the following add
 
 Kerberos library for Python
 
-apt-get -y install python-dev libkrb5-dev krb5-user
+    apt-get -y install python-dev libkrb5-dev krb5-user
 
 Kerberos Client
 
-pip install krb5
+    pip install krb5
 
 Remote access using WINRM
 
-pip install pywinrm
+    pip install pywinrm
 
 Ansible collection for Microsoft AD management
 
-ansible-galaxy collection install microsoft.ad
+    ansible-galaxy collection install microsoft.ad
 
 # Configuring Ansible Vault
 
@@ -114,7 +114,7 @@ Ansible Vault allows you to encrypt sensitive data such as passwords or keys.
 
 To encrypt a password, use the following command:
 
-ansible-vault encrypt_string 'your_password' --name 'vault_password'
+    ansible-vault encrypt_string 'your_password' --name 'vault_password'
 
 This will output the encrypted string, which you can add to your playbook or variable file.
 
@@ -124,7 +124,7 @@ vault_password: !vault |
 
 When running the playbook, provide the vault password using the --ask-vault-pass option:
 
-ansible-playbook playbook.yml --ask-vault-pass
+    ansible-playbook playbook.yml --ask-vault-pass
 
 # Additional packages (Jenkins)
 
