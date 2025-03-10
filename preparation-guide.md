@@ -167,3 +167,8 @@ To connect Jenkins with Active Directory, you need the following additional pack
 8. Click `OK`
 
 Now you are ready to go and use the available playbooks or develop new ones according to your needs! :)
+
+# Maintenance Tips
+- It's important to keep the environment up to date, not only Jenkins and Ansible but also the plugins used. 
+- Take a snapshot of the machine before upgrading, this will ensure less downtime in the event of a rollback.
+- Have a maintenance window in your routine where all jobs are paused for updating. This will ensure that the vulnerabilities and bugs found have been fixed.
