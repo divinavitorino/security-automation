@@ -15,7 +15,7 @@ Access the [Preparation Guide](https://github.com/divinavitorino/security-automa
 
 The Playbooks that I've used on my project are available [here](https://github.com/divinavitorino/security-automation/tree/main/playbooks-and-pipelines)
 
-#Data Analysis
+# Data Analysis
 If you want the code that I used to run the statistical analysis, it is available [here](https://github.com/divinavitorino/security-automation/blob/main/data-analysis.py)
 
 # Platforms:
