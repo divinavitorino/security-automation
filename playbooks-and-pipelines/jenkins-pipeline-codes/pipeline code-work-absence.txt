@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Repository Clone') {
             steps {
-                git branch: 'main', changelog: false, url: 'https://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@github.com/divinavitorino/security-automation.git'
+                git branch: 'main', changelog: false, url: 'https://[Github Token]@github.com/divinavitorino/security-automation.git'
             }
         }
         stage('Block User') {
